@@ -12,30 +12,26 @@ public class Client implements InClient {
 
     public String toString() {
 
-        return nom + " amb DNI: " + dni + "\n";
+        return nom + " amb DNI: " + dni;
     }
 
     @Override
     public String getNom() {
-        // TODO Auto-generated method stub
         return nom;
     }
 
     @Override
     public String getDni() {
-        // TODO Auto-generated method stub
         return dni;
     }
 
     @Override
-    public void setNom(String nom) {
-        // TODO Auto-generated method stub
-        nom = nom;
+    public void setNom(String n) {
+        this.nom = n;
     }
 
     @Override
     public void setDni(String dni) {
-        // TODO Auto-generated method stub
-        dni = dni;
+        this.dni = dni;
     }
 }
