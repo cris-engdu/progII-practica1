@@ -15,7 +15,7 @@ public class Allotjament implements InAllotjament {
 
     @Override
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class Allotjament implements InAllotjament {
 
     @Override
     public String getId() {
-        return id;
+        return this.id;
     }
 
     @Override
@@ -36,9 +36,9 @@ public class Allotjament implements InAllotjament {
     @Override
     public long getEstadaMinima(Temp temp) {
         if (temp==Temp.ALTA){
-            return estada_min_alta;
+            return this.estada_min_alta;
         }else {
-            return estada_min_baixa;
+            return this.estada_min_baixa;
         }
     }
 

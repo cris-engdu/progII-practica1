@@ -21,15 +21,15 @@ public class Reserva implements InReserva{
     }
     @Override
     public Client getClient() {
-        return client;
+        return this.client;
     }
     @Override
     public LocalDate getDataEntrada() {
-        return dataEntrada;
+        return this.dataEntrada;
     }
     @Override
     public LocalDate getDataSortida() {
-        return dataSortida;
+        return this.dataSortida;
     }
     @Override
     public void setAllotjament_(Allotjament allotjament_) {

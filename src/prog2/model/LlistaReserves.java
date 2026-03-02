@@ -10,7 +10,7 @@ public class LlistaReserves implements InLlistaReserves{//instancia de reserva
 
     private ArrayList<Reserva> reserves;
     public LlistaReserves(){
-        reserves=new ArrayList<>();
+        this.reserves=new ArrayList<>();
     }
 
     private boolean allotjamentDisponible(Allotjament allotjament, LocalDate dataEntrada,LocalDate dataSortida){

@@ -12,7 +12,7 @@ public class MobilHome extends Casa {
     //getters
 
     public boolean isTerrassa_barbacoa(){
-        return terrassa_barbacoa;
+        return this.terrassa_barbacoa;
     }
 
     //setters
@@ -21,6 +21,6 @@ public class MobilHome extends Casa {
         this.terrassa_barbacoa=terr_bar;
     }
     public boolean correcteFuncionament() {
-        return terrassa_barbacoa;
+        return this.terrassa_barbacoa;
     }
 }

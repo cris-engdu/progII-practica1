@@ -1,7 +1,7 @@
 package prog2.model;
 
 public class Casa extends Allotjament{
-    public enum mides{
+    public enum mides{ // nomes poden ser aquest tres tipus
         PETITA,MITJANA,GRAN;
     }
 
@@ -17,14 +17,14 @@ public class Casa extends Allotjament{
     }
 
     public mides getMida(){
-        return mida;
+        return this.mida;
     }
 
     public int getNum_habitacions(){
-        return num_habitacions;
+        return this.num_habitacions;
     }
     public int getCapacitat_places(){
-        return capacitat_places;
+        return this.capacitat_places;
     }
 
     public void setMida(mides m){

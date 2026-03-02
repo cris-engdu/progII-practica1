@@ -12,10 +12,10 @@ public class Glamping extends Casa {
     }
     //getters
     public String getMaterial() {
-        return material;
+        return this.material;
     }
     public boolean isCasa_mascotas(){
-        return casa_mascotas;
+        return this.casa_mascotas;
     }
     //setters
 
@@ -28,6 +28,6 @@ public class Glamping extends Casa {
 
     @Override
     public boolean correcteFuncionament() {
-        return casa_mascotas;
+        return this.casa_mascotas;
     }
 }

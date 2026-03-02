@@ -17,12 +17,12 @@ public class Client implements InClient {
 
     @Override
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
     @Override
     public String getDni() {
-        return dni;
+        return this.dni;
     }
 
     @Override

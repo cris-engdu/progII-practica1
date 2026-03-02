@@ -16,19 +16,19 @@ public class Bungalow extends Casa {
     }
     // getters
     public int getParking() {
-        return parking;
+        return this.parking;
     }
 
     public boolean isTerrassa() {
-        return terrassa;
+        return this.terrassa;
     }
 
     public boolean isTelevisio() {
-        return televisio;
+        return this.televisio;
     }
 
     public boolean isAire_fred() {
-        return aire_fred;
+        return this.aire_fred;
     }
 
     //setters
