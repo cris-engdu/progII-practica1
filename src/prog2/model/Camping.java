@@ -17,6 +17,7 @@ public class Camping implements InCamping{ //instancia de llistareserves y de ar
         this.llistaAllotjaments=new ArrayList<>();
         this.llistaClients=new ArrayList<>();
         this.LlistaReserves=new LlistaReserves();
+
     }
     @Override
     public String getNom() {
@@ -70,7 +71,7 @@ public class Camping implements InCamping{ //instancia de llistareserves y de ar
 
     @Override
     public void afegirBungalowPremium(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {
-        llistaAllotjaments.add(new BungalowPremium(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi);
+        llistaAllotjaments.add(new BungalowPremium(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi));
     }
 
     @Override
@@ -87,10 +88,11 @@ public class Camping implements InCamping{ //instancia de llistareserves y de ar
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
         Allotjament allotjament=null;
         Client client=null;
+        // creacio iterador
         Iterator<Allotjament> it= llistaAllotjaments.iterator();
-
+        //comprobar q no esta buit
         while(it.hasNext()){
-            Allotjament allot=it.next();
+            Allotjament allot=it.next();  //mira següent element
             if (allot.getId().equals(id_)){
                 allotjament= allot;
             }
