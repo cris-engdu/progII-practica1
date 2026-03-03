@@ -6,11 +6,9 @@ public class Allotjament implements InAllotjament {
     private long estada_min_alta;
     private long estada_min_baixa;
 
-    public Allotjament(String nom, String id, long estada_min_alta, long estada_min_baixa) {
+    public Allotjament(String nom, String id) {
         this.nom = nom;
         this.id = id;
-        this.estada_min_alta = estada_min_alta;
-        this.estada_min_baixa = estada_min_baixa;
     }
 
     @Override

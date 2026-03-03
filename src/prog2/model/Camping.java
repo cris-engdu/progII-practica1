@@ -65,22 +65,22 @@ public class Camping implements InCamping{ //instancia de llistareserves y de ar
 
     @Override
     public void afegirBungalow(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred) {
-
+        llistaAllotjaments.add(new Bungalow(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred));
     }
 
     @Override
     public void afegirBungalowPremium(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {
-
+        llistaAllotjaments.add(new BungalowPremium(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi);
     }
 
     @Override
     public void afegirGlamping(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, String material, boolean casaMascota) {
-
+        llistaAllotjaments.add(new Glamping(nom_, idAllotjament_, mida, habitacions, placesPersones, material, casaMascota));
     }
 
     @Override
     public void afegirMobilHome(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa) {
-
+        llistaAllotjaments.add(new MobilHome(nom_, idAllotjament_, mida, habitacions, placesPersones, terrassaBarbacoa));
     }
 
     @Override
@@ -125,6 +125,18 @@ public class Camping implements InCamping{ //instancia de llistareserves y de ar
 
     @Override
     public Allotjament getAllotjamentEstadaMesCurta(InAllotjament.Temp temp) {
-        return null;
+        if (llistaAllotjaments.size() == 0) {
+            return null;
+        }
+        Allotjament allEstadaCurta = llistaAllotjaments.get(0);
+        for (int i=0;i<llistaAllotjaments.size();i++){
+            Allotjament all=llistaAllotjaments.get(i);
+            if (all.getEstadaMinima(temp)< allEstadaCurta.getEstadaMinima(temp)){
+                allEstadaCurta=all;
+            }
+        }
+        return allEstadaCurta;
     }
+
+    // public static InAllotjament.Temp getTemporada(LocalDate data)
 }

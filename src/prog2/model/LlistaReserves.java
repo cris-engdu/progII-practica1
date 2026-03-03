@@ -3,6 +3,7 @@ package prog2.model;
 import prog2.vista.ExcepcioReserva;
 
 import java.time.LocalDate;
+import java.time.MonthDay;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
@@ -26,6 +27,19 @@ public class LlistaReserves implements InLlistaReserves{//instancia de reserva
     }
     private boolean isEstadaMinima(Allotjament allotjament, LocalDate dataEntrada,LocalDate dataSortida){
         long estada= ChronoUnit.DAYS.between(dataEntrada,dataSortida);
+        MonthDay iniciTempBaixa = MonthDay.of(09, 21);
+        MonthDay finTempBaixa = MonthDay.of(03, 20);
+        MonthDay dataEntradaMD = MonthDay.from(dataEntrada);
+        MonthDay dataSortidaMD = MonthDay.from(dataSortida);
+        InAllotjament.Temp temp;
+        if ((!dataEntradaMD.isBefore(iniciTempBaixa) || !dataEntradaMD.isAfter(finTempBaixa)) && //data de entrada a dins de l'interval
+                (!dataSortidaMD.isBefore(iniciTempBaixa) || !dataSortidaMD.isAfter(finTempBaixa)) && // data de sortida a dins de l'interval
+                    (dataSortida.getYear() - dataEntrada.getYear() < 2) {
+            temp = InAllotjament.Temp.BAIXA;
+        } else {
+            temp = InAllotjament.Temp.ALTA;
+        }
+        if (estada => allotjament.getEstadaMinima(temp)) { return true; } else { return false;}
     }
     @Override
     public void afegirReserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
