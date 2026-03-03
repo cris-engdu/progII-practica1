@@ -70,7 +70,7 @@ public class Camping implements InCamping{ //instancia de llistareserves y de ar
 
     @Override
     public void afegirBungalowPremium(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {
-        llistaAllotjaments.add(new BungalowPremium(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi);
+        llistaAllotjaments.add(new BungalowPremium(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi));
     }
 
     @Override
@@ -83,7 +83,7 @@ public class Camping implements InCamping{ //instancia de llistareserves y de ar
         llistaAllotjaments.add(new MobilHome(nom_, idAllotjament_, mida, habitacions, placesPersones, terrassaBarbacoa));
     }
 
-    @Override
+        @Override
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
         Allotjament allotjament=null;
         Client client=null;
@@ -138,5 +138,13 @@ public class Camping implements InCamping{ //instancia de llistareserves y de ar
         return allEstadaCurta;
     }
 
-    // public static InAllotjament.Temp getTemporada(LocalDate data)
+    public static InAllotjament.Temp getTemporada(LocalDate data) {
+        int mes = data.getMonthValue();
+        int dia = data.getDayOfMonth();
+        if ((mes > 3 && mes < 9) || (mes == 3 && dia >= 21) || (mes == 9 && dia <= 20)) {
+            return InAllotjament.Temp.ALTA;
+        } else {
+            return InAllotjament.Temp.BAIXA;
+        }
+    }
 }

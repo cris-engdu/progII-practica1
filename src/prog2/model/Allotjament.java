@@ -1,14 +1,18 @@
 package prog2.model;
 
+import java.time.LocalDate;
+
 public class Allotjament implements InAllotjament {
     private String nom;
     private String id;
     private long estada_min_alta;
     private long estada_min_baixa;
 
-    public Allotjament(String nom, String id) {
+    public Allotjament(String nom, String id, long estada_min_alta, long estada_min_baixa) {
         this.nom = nom;
         this.id = id;
+        this.estada_min_alta = estada_min_alta;
+        this.estada_min_baixa = estada_min_baixa;
     }
 
     @Override
@@ -49,5 +53,12 @@ public class Allotjament implements InAllotjament {
     @Override
     public boolean correcteFuncionament() {
         return false;
+    }
+
+    public String toString() {
+        String str = "Nom=" + this.getNom() + ", Id=" + this.getId() + ", estada mínima en temp ALTA: " +
+                this.getEstadaMinima(InAllotjament.Temp.ALTA) + ", estada mínima en temp BAIXA: " +
+                this.getEstadaMinima(InAllotjament.Temp.BAIXA) + ".";
+        return str;
     }
 }
