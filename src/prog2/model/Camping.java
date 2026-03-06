@@ -84,29 +84,46 @@ public class Camping implements InCamping{ //instancia de llistareserves y de ar
         llistaAllotjaments.add(new MobilHome(nom_, idAllotjament_, mida, habitacions, placesPersones, terrassaBarbacoa));
     }
 
-        @Override
+    public Allotjament buscarAllotjament(String idAllotjament) {
+        Iterator itrAllotjaments = llistaAllotjaments.iterator();
+        while (itrAllotjaments.hasNext()) {
+            Allotjament allot = (Allotjament) itrAllotjaments.next();
+            if (allot.getId().equals(idAllotjament)) {
+                return allot;
+            }
+        }
+        return null;
+    }
+
+    public Client buscarClient(String dni) {
+        Iterator itrClients = llistaClients.iterator();
+        while (itrClients.hasNext()) {
+            Client client = (Client) itrClients.next();
+            if (client.getDni().equals(dni)) {
+                return client;
+            }
+        }
+        return null;
+    }
+
+    @Override
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
-        Allotjament allotjament=null;
-        Client client=null;
-        // creacio iterador
-        Iterator<Allotjament> it= llistaAllotjaments.iterator();
-        //comprobar q no esta buit
-        while(it.hasNext()){
-            Allotjament allot=it.next();  //mira següent element
-            if (allot.getId().equals(id_)){
-                allotjament= allot;
-            }
+        // Buscar client, si no existeix llançar ExcepcioReserva
+        Client clientNou = null;
+        if (buscarClient(dni_) == null) {
+            throw new ExcepcioReserva("El client amb DNI " + dni_ + " no existeix");
+        } else {
+            clientNou = buscarClient(dni_);
         }
 
-        Iterator<Client> itc=llistaClients.iterator();
-
-        while(itc.hasNext()){
-            Client cli=itc.next();
-            if(cli.getDni().equals(dni_)){
-                client=cli;
-            }
+        // Buscar allotjament de la mateixa manera
+        Allotjament allotNou = null;
+        if (buscarAllotjament(id_) == null) {
+            throw new ExcepcioReserva("L'allotjament amb id " + id_ + " no existeix");
+        } else {
+            allotNou = buscarAllotjament(id_);
         }
-        LlistaReserves.afegirReserva(allotjament,client,dataEntrada,dataSortida);
+        LlistaReserves.afegirReserva(allotNou, clientNou, dataEntrada, dataSortida);
     }
 
     @Override

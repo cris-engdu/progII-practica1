@@ -11,8 +11,7 @@ public class Client implements InClient {
     }
 
     public String toString() {
-
-        return nom + " amb DNI: " + dni;
+        return nom + " amb DNI: " + dni + ". ";
     }
 
     @Override

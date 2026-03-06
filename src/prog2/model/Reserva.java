@@ -1,4 +1,6 @@
 package prog2.model;
+import prog2.vista.ExcepcioReserva;
+
 import java.time.LocalDate;
 
 public class Reserva implements InReserva{
@@ -8,11 +10,17 @@ public class Reserva implements InReserva{
     private LocalDate dataSortida;
 
 
-    public Reserva(Allotjament allotjament,Client client,LocalDate dataEntrada,LocalDate dataSortida) {
+    public Reserva(Allotjament allotjament,Client client,LocalDate dataEntrada,LocalDate dataSortida) throws ExcepcioReserva {
         this.allotjament=allotjament;
         this.client=client;
-        this.dataEntrada=dataEntrada;
-        this.dataSortida=dataSortida;
+
+        // Llançar error si la data de sortida és anterior a la data d'entrada
+        if (dataSortida.isBefore(dataEntrada)) {
+            throw new ExcepcioReserva("La data de sortida no pot ser abans de la data d'entrada");
+        } else {
+            this.dataEntrada=dataEntrada;
+            this.dataSortida=dataSortida;
+        }
     }
 
     @Override

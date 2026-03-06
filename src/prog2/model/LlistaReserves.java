@@ -44,12 +44,12 @@ public class LlistaReserves implements InLlistaReserves{//instancia de reserva
     @Override
     public void afegirReserva(Allotjament allotjament, Client client, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
             if(!allotjamentDisponible(allotjament,dataEntrada,dataSortida)){
-                throw new ExcepcioReserva("L'allotjament amb identificador" +allotjament.getId() + " no esta disponible en la data" +
+                throw new ExcepcioReserva("L'allotjament amb identificador" +allotjament.getId() + " no està disponible en la data" +
                         "demanada " +dataEntrada+ " pel client " +client.getNom()+ " amb DNI " +client.getNom()+ " .");
             }
             if (!isEstadaMinima(allotjament,dataEntrada,dataSortida)){
                 throw new ExcepcioReserva("Les dates sol·licitades pel client " +client.getNom()+ " amb " +
-                        "DNI: " +client.getDni()+ " no compleixen l'estada minima per l'allotjament amb identificador " +allotjament.getId()+ " .");
+                        "DNI: " +client.getDni()+ " no compleixen l'estada mínima per l'allotjament amb identificador " +allotjament.getId()+ " .");
 
             }
             reserves.add(new Reserva(allotjament,client,dataEntrada,dataSortida));
