@@ -37,7 +37,7 @@ public class  GestorCamping {
         //--------------------------------------------------------------------------------------------------
         // Per completar
         System.out.println(">> L'allotjament amb estada mínima de la temporada alta més curta és el següent: " +
-                campingMar.getAllotjamentEstadaMesCurta(InAllotjament.Temp.ALTA));
+                campingMar.getAllotjamentEstadaMesCurta(InAllotjament.Temp.ALTA))   ;
     }
 
     /**
