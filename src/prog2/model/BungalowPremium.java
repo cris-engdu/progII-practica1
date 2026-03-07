@@ -33,4 +33,7 @@ public class BungalowPremium extends Bungalow {
     public boolean correcteFuncionament() {
         return this.isAire_fred() && this.codiWifi.length() >= 8 && codiWifi.length() <= 16;
     }
+    public String toString(){
+        return super.toString() +"Bungalow Premium{codiWifi=" +codiWifi+ ", serveisExtres=" +serveisExtra+ "}";
+    }
 }

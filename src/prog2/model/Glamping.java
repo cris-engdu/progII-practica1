@@ -31,4 +31,7 @@ public class Glamping extends Casa {
     public boolean correcteFuncionament() {
         return this.casa_mascotas;
     }
+    public String toString(){
+        return super.toString() + "Glamping{material=" +material+ ", casaMascotes=" +casa_mascotas+ "}";
+    }
 }

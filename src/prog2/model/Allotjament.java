@@ -14,7 +14,7 @@ public class Allotjament implements InAllotjament {
         this.estada_min_alta = estada_min_alta;
         this.estada_min_baixa = estada_min_baixa;
     }
-
+//getters
     @Override
     public String getNom() {
         return this.nom;
@@ -43,7 +43,7 @@ public class Allotjament implements InAllotjament {
             return this.estada_min_baixa;
         }
     }
-
+//setters
     @Override
     public void setEstadaMinima(long estadaMinimaALTA_, long estadaMinimaBAIXA_) {
             this.estada_min_alta=estadaMinimaALTA_;

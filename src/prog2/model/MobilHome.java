@@ -24,4 +24,7 @@ public class MobilHome extends Casa {
     public boolean correcteFuncionament() {
         return this.terrassa_barbacoa;
     }
+    public String toString(){
+        return super.toString() + "Mobil-home{terrassaBarbacoa= " +terrassa_barbacoa+ "}";
+    }
 }

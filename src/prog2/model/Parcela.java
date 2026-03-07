@@ -32,4 +32,8 @@ public class Parcela extends Allotjament {
     public boolean correcteFuncionament(){
         return connexio_electrica;
     }
+
+    public String toString(){
+        return super.toString() + "Parcela{mida= " +this.mida+ ", connexioElectrica= " +this.connexio_electrica+ "}";
+    }
 }
