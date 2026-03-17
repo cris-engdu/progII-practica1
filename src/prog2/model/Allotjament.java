@@ -3,16 +3,26 @@ package prog2.model;
 import java.time.LocalDate;
 
 public class Allotjament implements InAllotjament {
+    public enum iluminacion{
+        ALTA, MITJANA, RES
+    }
     private String nom;
     private String id;
     private long estada_min_alta;
     private long estada_min_baixa;
+    private boolean operatiu;
+    private iluminacion Iluminacio;
 
-    public Allotjament(String nom, String id, long estada_min_alta, long estada_min_baixa) {
+
+
+    public Allotjament(String nom, String id, long estada_min_alta, long estada_min_baixa,boolean operatiu,String ilum) {
         this.nom = nom;
         this.id = id;
         this.estada_min_alta = estada_min_alta;
         this.estada_min_baixa = estada_min_baixa;
+        this.operatiu=operatiu;
+        this.Iluminacio=iluminacion.valueOf(ilum);
+
     }
 //getters
     @Override
@@ -43,11 +53,30 @@ public class Allotjament implements InAllotjament {
             return this.estada_min_baixa;
         }
     }
+
+    public iluminacion getIluminacio(){
+        return this.Iluminacio;
+    }
+
 //setters
     @Override
     public void setEstadaMinima(long estadaMinimaALTA_, long estadaMinimaBAIXA_) {
             this.estada_min_alta=estadaMinimaALTA_;
             this.estada_min_baixa=estadaMinimaBAIXA_;
+    }
+
+    @Override
+    public void tancarAllotjament(TascaManteniment tasca) {
+
+    }
+
+    @Override
+    public void obrirAllotjament() {
+
+    }
+
+    public void setIluminacio(iluminacion iluminacio){
+        this.Iluminacio = iluminacio;
     }
 
     @Override

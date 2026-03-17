@@ -2,7 +2,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import prog2.model.Camping;
 import prog2.model.InAllotjament;
-import prog2.vista.ExcepcioReserva;
+import prog2.vista.ExcepcioCamping;
 
 import java.time.LocalDate;
 
@@ -65,7 +65,7 @@ public class CampingTest {
     // Reserves
     // -------------------------
     @Test
-    void testAfegirReservaCorrecta() throws ExcepcioReserva {
+    void testAfegirReservaCorrecta() throws ExcepcioCamping {
         camping.afegirClient("Joan", "11111111A");
         camping.afegirParcela("Parcela 1", "P1", 25f, true);
 
@@ -80,7 +80,7 @@ public class CampingTest {
         // Intentem fer una reserva amb un id d'allotjament que no existeix
         camping.afegirClient("Joan", "11111111A");
 
-        ExcepcioReserva ex = assertThrows(ExcepcioReserva.class, () ->
+        ExcepcioCamping ex = assertThrows(ExcepcioCamping.class, () ->
                 camping.afegirReserva("NO_EXISTEIX", "11111111A", dataEntrada, dataSortida)
         );
 
@@ -92,7 +92,7 @@ public class CampingTest {
         // Intentem fer una reserva amb un DNI de client que no existeix
         camping.afegirParcela("Parcela 1", "P1", 25f, true);
 
-        ExcepcioReserva ex = assertThrows(ExcepcioReserva.class, () ->
+        ExcepcioCamping ex = assertThrows(ExcepcioCamping.class, () ->
                 camping.afegirReserva("P1", "99999999Z", dataEntrada, dataSortida)
         );
 
