@@ -6,9 +6,9 @@ public class Bungalow extends Casa {
     private boolean televisio;
     private boolean aire_fred;
 
-    public Bungalow(String nom, String id, String mida, int num_habitacions, int capacitat_places
+    public Bungalow(String nom, String id, String mida,boolean operatiu,String ilum, int num_habitacions, int capacitat_places
             , int parking, boolean terrassa, boolean televisio, boolean aire_fred) {
-        super(nom, id, mida, num_habitacions, capacitat_places);
+        super(nom, id,0,0,operatiu,ilum, mida,num_habitacions, capacitat_places);
         this.parking = parking;
         this.terrassa = terrassa;
         this.televisio = televisio;

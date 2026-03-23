@@ -6,9 +6,8 @@ public class BungalowPremium extends Bungalow {
     private String codiWifi;
     private boolean serveisExtra;
 
-    public BungalowPremium(String nom, String id, String mida, int num_habitacions, int capacitat_places, int parking, boolean terrassa, boolean televisio,
-                           boolean aire_fred,boolean serveisExtra,String codiWifi) {
-        super(nom, id, mida, num_habitacions, capacitat_places, parking, terrassa, televisio, aire_fred);
+    public BungalowPremium(String nom, String id, String mida, boolean operatiu, String ilum, int num_habitacions, int capacitat_places, int parking, boolean terrassa, boolean televisio, boolean aire_fred) {
+        super(nom, id, mida, operatiu, ilum, num_habitacions, capacitat_places, parking, terrassa, televisio, aire_fred);
         this.codiWifi=codiWifi;
         this.serveisExtra= serveisExtra;
     }

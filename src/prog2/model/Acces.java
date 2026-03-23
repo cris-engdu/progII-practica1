@@ -1,12 +1,21 @@
 package prog2.model;
 
+import prog2.vista.ExcepcioCamping;
+
 import java.util.ArrayList;
 
-public abstract class Acces extends Allotjament implements InAcces{
-    private ArrayList<Allotjament> llistaAllotjaments ;
-    public Acces(String nom, String id, long estada_min_alta, long estada_min_baixa, boolean operatiu, String ilum) {
-        super(nom, id, estada_min_alta, estada_min_baixa, operatiu, ilum);
-        this.llistaAllotjaments=new ArrayList<>();
+public abstract class Acces   implements InAcces{
+    private String nom;
+    private boolean estat;
+    private boolean accessibilitat;
+    private LlistaAllotjaments llistaAllotjaments;
+
+    public Acces(String nomacc,boolean estat,boolean accessibilitat, LlistaAllotjaments llistaAllotjaments) {
+
+        this.nom=nomacc;
+        this.estat=estat;
+        this.accessibilitat=accessibilitat;
+        this.llistaAllotjaments=llistaAllotjaments;
 
     }
 
@@ -14,23 +23,24 @@ public abstract class Acces extends Allotjament implements InAcces{
 
 
     @Override
-    public void afegirAllotjament(Allotjament allotjament) {
-        llistaAllotjaments.add(allotjament);
+    public void afegirAllotjament(Allotjament allotjament)  {
+        this.llistaAllotjaments.afegirAllotjament(allotjament);
     }
 
     @Override
     public void tancarAcces() {
-        operatiu=false;
+
+        this.estat=false;
     }
 
     @Override
     public void obrirAcces() {
-
+    this.estat=true;
     }
 
     @Override
     public boolean isAccessibilitat() {
-        return false;
+        return this.accessibilitat;
     }
 
     @Override
@@ -40,11 +50,11 @@ public abstract class Acces extends Allotjament implements InAcces{
 
     @Override
     public boolean getEstat() {
-        return operatiu;
+        return estat;
     }
 
     @Override
     public LlistaAllotjaments getAAllotjaments() {
-        return null;
+        return this.llistaAllotjaments;
     }
 }

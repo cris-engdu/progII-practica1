@@ -1,7 +1,17 @@
 package prog2.model;
 
 public class AccesAsfalt extends Acces{
-    public AccesAsfalt(String nom, String id, long estada_min_alta, long estada_min_baixa, boolean operatiu, String ilum) {
-        super(nom, id, estada_min_alta, estada_min_baixa, operatiu, ilum);
+    private double m2;
+    public AccesAsfalt(String nomacc, boolean estat, boolean accessibilitat, double m2) {
+        super(nomacc, estat, accessibilitat,new LlistaAllotjaments());
+        this.m2=m2;
     }
+
+    public double getM2() {
+        return this.m2;
+    }
+    public void setM2(double m2){
+        this.m2=m2;
+    }
+
 }
