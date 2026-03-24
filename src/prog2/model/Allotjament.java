@@ -53,14 +53,14 @@ public class Allotjament implements InAllotjament {
             return this.estada_min_baixa;
         }
     }
-    public boolean getOperatiu(){
+    public boolean isOperatiu(){
         return this.operatiu;
     }
     public void setOperatiu(boolean operatiu){
         this.operatiu=operatiu;
     }
 
-    public iluminacion getIluminacio(){
+    public iluminacion  getIluminacio(){
         return this.Iluminacio;
     }
 
