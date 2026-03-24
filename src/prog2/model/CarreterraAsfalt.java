@@ -1,7 +1,10 @@
 package prog2.model;
 
 public class CarreterraAsfalt extends AccesAsfalt{
-    public CarreterraAsfalt(String nom, String id, long estada_min_alta, long estada_min_baixa, boolean operatiu, String ilum) {
-        super(nom, id, estada_min_alta, estada_min_baixa, operatiu, ilum);
+    private int pesMaxim;
+    public CarreterraAsfalt(String nom, boolean accessibilitat, boolean operatiu, float metresQuadratsAsfalt, int pesMaxim) {
+        super(nom, accessibilitat, operatiu, metresQuadratsAsfalt);
+        setAccessibilitat(true);
+        this.pesMaxim = pesMaxim;
     }
 }
