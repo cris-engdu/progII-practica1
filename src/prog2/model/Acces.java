@@ -2,20 +2,21 @@ package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Acces   implements InAcces{
+public abstract class Acces   implements InAcces, Serializable {
     private String nom;
     private boolean estat;
     private boolean accessibilitat;
     private LlistaAllotjaments llistaAllotjaments;
 
-    public Acces(String nomacc,boolean estat,boolean accessibilitat, LlistaAllotjaments llistaAllotjaments) {
+    public Acces(String nomacc,boolean estat) {
 
         this.nom=nomacc;
         this.estat=estat;
-        this.accessibilitat=accessibilitat;
-        this.llistaAllotjaments=llistaAllotjaments;
+        this.accessibilitat= isAccessibilitat();
+        this.llistaAllotjaments=new LlistaAllotjaments();
 
     }
 
@@ -39,9 +40,7 @@ public abstract class Acces   implements InAcces{
     }
 
     @Override
-    public boolean isAccessibilitat() {
-        return this.accessibilitat;
-    }
+    public abstract boolean isAccessibilitat();
 
     @Override
     public String getNom() {
@@ -56,5 +55,9 @@ public abstract class Acces   implements InAcces{
     @Override
     public LlistaAllotjaments getAAllotjaments() {
         return this.llistaAllotjaments;
+    }
+
+    public String toString(){
+        return "Nom: " +this.nom+ ", estat: " +(this.estat ? "obert" : "tancat")+ ", accessibilitat: " +this.accessibilitat;
     }
 }

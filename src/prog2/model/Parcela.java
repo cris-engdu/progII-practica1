@@ -4,10 +4,10 @@ public class Parcela extends Allotjament {
     private float mida; //mida en m^2
     private boolean connexio_electrica; //
 
-    public Parcela(String nom, String id, float mida, boolean connexio_electrica) {
-        super(nom, id, 4, 2); // Estada mínima en temp ALTA: 4, temp BAIXA: 2
-        this.mida = mida;
-        this.connexio_electrica = connexio_electrica;
+    public Parcela(String nom, String id, long estada_min_alta, long estada_min_baixa, boolean operatiu, String ilum,float mida, boolean connexio_electrica) {
+        super(nom, id, 4, 2, operatiu, ilum);
+        this.mida=mida;
+        this.connexio_electrica=connexio_electrica;
     }
 
 

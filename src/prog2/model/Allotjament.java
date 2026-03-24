@@ -53,6 +53,12 @@ public class Allotjament implements InAllotjament {
             return this.estada_min_baixa;
         }
     }
+    public boolean getOperatiu(){
+        return this.operatiu;
+    }
+    public void setOperatiu(boolean operatiu){
+        this.operatiu=operatiu;
+    }
 
     public iluminacion getIluminacio(){
         return this.Iluminacio;
@@ -83,15 +89,11 @@ public class Allotjament implements InAllotjament {
         this.Iluminacio = iluminacio;
     }
 
-    @Override
-    public boolean correcteFuncionament() {
-        return false;
-    }
 
     public String toString() {
         String str = "Nom=" + this.getNom() + ", Id=" + this.getId() + ", estada mínima en temp ALTA: " +
                 this.getEstadaMinima(InAllotjament.Temp.ALTA) + ", estada mínima en temp BAIXA: " +
-                this.getEstadaMinima(InAllotjament.Temp.BAIXA) + ".";
+                this.getEstadaMinima(InAllotjament.Temp.BAIXA) + ", estat operatiu: " +(this.operatiu ? "Si" : "No")+ ", iluminacio: " +this.Iluminacio;
         return str;
     }
 }

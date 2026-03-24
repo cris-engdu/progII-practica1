@@ -1,6 +1,16 @@
 package prog2.model;
 
-public class TascaManteniment implements InTascaManteniment{
+import java.io.Serializable;
+
+public class TascaManteniment implements InTascaManteniment, Serializable {
+   public static enum TipusTascaManteniment{
+       Repararacio,
+       Neteja,
+       RevisioTecnica,
+       Desinfeccio
+   }
+   private int num_;
+
     @Override
     public int getNum() {
         return 0;

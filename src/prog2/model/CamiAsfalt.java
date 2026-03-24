@@ -1,7 +1,15 @@
 package prog2.model;
 
 public class CamiAsfalt extends AccesAsfalt{
-    public CamiAsfalt(String nom, String id, long estada_min_alta, long estada_min_baixa, boolean operatiu, String ilum) {
-        super(nom, id, estada_min_alta, estada_min_baixa, operatiu, ilum);
+
+    public CamiAsfalt(String nomacc, boolean estat  , double m2) {
+        super(nomacc, estat, m2);
     }
+
+    @Override
+    public boolean isAccessibilitat(){
+        return false;
+    }
+
+
 }

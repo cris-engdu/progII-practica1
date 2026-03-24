@@ -1,7 +1,28 @@
 package prog2.model;
 
 public class CarreterraTerra extends AccesTerra{
-    public CarreterraTerra(String nom, String id, long estada_min_alta, long estada_min_baixa, boolean operatiu, String ilum) {
-        super(nom, id, estada_min_alta, estada_min_baixa, operatiu, ilum);
+    private int amplada;
+
+    public CarreterraTerra(String nomacc, boolean estat, boolean accessibilitat, LlistaAllotjaments llistaAllotjaments, double longitud,int amplada) {
+        super(nomacc, estat, accessibilitat, llistaAllotjaments, longitud);
+        this.amplada = amplada;
+    }
+
+    public int getAmplada() {
+        return this.amplada;
+    }
+
+    public void setAmplada(int amplada) {
+        this.amplada = amplada;
+    }
+
+    @Override
+    public boolean isAccessibilitat(){
+        return true;
+    }
+
+    @Override
+    public String toString(){
+        return super.toString() + "Carretera de terra,  amplada " +this.amplada+ " metres";
     }
 }

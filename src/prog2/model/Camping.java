@@ -4,27 +4,19 @@ import prog2.vista.ExcepcioCamping;
 
 import java.util.ArrayList;
 
-public class Camping implements InCamping{ //instancia de llistareserves y de arraylist.. arraylist allotjament i reserva
+public class Camping implements InCamping {
     private String nomCamping;
-    private ArrayList<Client> llistaClients;
     private ArrayList<Allotjament> llistaAllotjaments ;
 
     public Camping(String nomCamping){
         this.nomCamping=nomCamping;
         this.llistaAllotjaments=new ArrayList<>();
-        this.llistaClients=new ArrayList<>();
 
 
     }
-
-
-    public ArrayList<Allotjament> getLlistaAllotjaments() {
-        return this.llistaAllotjaments;
-    }
-
     @Override
     public String getNomCamping() {
-        return this.nomCamping;
+        return "";
     }
 
     @Override
@@ -72,3 +64,6 @@ public class Camping implements InCamping{ //instancia de llistareserves y de ar
 
     }
 }
+}
+
+
