@@ -1,9 +1,9 @@
 package prog2.model;
 
 public class AccesTerra extends Acces{
-        private double longitud;
+        private float longitud;
 
-    public AccesTerra(String nomacc, boolean estat ,double longitud) {
+    public AccesTerra(String nomacc, boolean estat ,float longitud) {
         super(nomacc, estat );
         this.longitud=longitud;
     }
@@ -11,7 +11,7 @@ public class AccesTerra extends Acces{
     public double getLongitud() {
         return this.longitud;
     }
-    public void setLongitud(double longitud) {
+    public void setLongitud(float longitud) {
         this.longitud=longitud;
     }
 

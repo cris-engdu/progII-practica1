@@ -24,8 +24,12 @@ public abstract class Acces   implements InAcces, Serializable {
 
 
     @Override
-    public void afegirAllotjament(Allotjament allotjament)  {
-        this.llistaAllotjaments.afegirAllotjament(allotjament);
+    public void afegirAllotjament(Allotjament allotjament) {
+        try {
+            llistaAllotjaments.afegirAllotjament(allotjament);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

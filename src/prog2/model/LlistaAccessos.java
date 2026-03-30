@@ -5,37 +5,47 @@ import prog2.vista.ExcepcioCamping;
 import java.util.ArrayList;
 
 public class LlistaAccessos implements InLlistaAccessos{
-    private ArrayList<Acces> access;
+    private ArrayList<Acces> llistaaccessos;
 
     public LlistaAccessos(){
-        access = new ArrayList<>();
+        this.llistaaccessos = new ArrayList<>();
     }
     @Override
     public void afegirAcces(Acces acc) throws ExcepcioCamping {
 
-          for (Acces a: access){
+          for (Acces a: llistaaccessos){
               if (a.equals(acc)) {
                   throw new ExcepcioCamping("L'acces ja existeix");
               }
           }
 
-            access.add(acc);
+            llistaaccessos.add(acc);
     }
 
     @Override
     public void buidar() {
-        access.clear();
+        llistaaccessos.clear();
 
     }
 
     @Override
     public String llistarAccessos(boolean estat) throws ExcepcioCamping {
-        return "";
+        String imprimir="";
+        for (Acces a: llistaaccessos){
+            if (a.getEstat()==estat){
+                imprimir += a.toString();
+            }
+        }
+        if (imprimir.equals("")){
+            throw new ExcepcioCamping(("No hi cap acces amb aquest estat"));
+        }
+
+        return imprimir;
     }
 
     @Override
     public void actualitzaEstatAccessos() throws ExcepcioCamping {
-        for (Acces a: access){
+        for (Acces a: llistaaccessos){
             if (a.getAAllotjaments().containsAllotjamentOperatiu()){
                 a.obrirAcces();
             }else{
@@ -47,7 +57,7 @@ public class LlistaAccessos implements InLlistaAccessos{
     @Override
     public int calculaAccessosNoAccessibles() throws ExcepcioCamping {
         int cont=0;
-        for (Acces a: access){
+        for (Acces a: llistaaccessos){
             if (!a.isAccessibilitat()){
                 cont++;
             }
@@ -57,6 +67,13 @@ public class LlistaAccessos implements InLlistaAccessos{
 
     @Override
     public float calculaMetresTerra() throws ExcepcioCamping {
-        return 0;
+        float metres=0;
+
+        for (Acces a: llistaaccessos){
+            if (a instanceof AccesTerra){
+                metres+=((AccesTerra) a).getLongitud();
+            }
+        }
+        return metres;
     }
 }
