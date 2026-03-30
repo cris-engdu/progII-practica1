@@ -28,7 +28,7 @@ public class LlistaAllotjaments implements InLlistaAllotjaments{
     public String llistarAllotjaments(String estat) throws ExcepcioCamping {
         String resultat="";
         for (Allotjament a:llistaAllotjaments){
-            if (a.isOperatiu() && estat.equals("obert") || !a.isOperatiu() && estat.equals("tancat")){
+            if (a.isOperatiu() && estat.equals("Operatiu") || !a.isOperatiu() && estat.equals("No Operatiu")){
                 resultat+=a.toString();
 
             }

@@ -3,7 +3,7 @@ package prog2.model;
 public class CarreterraTerra extends AccesTerra{
     private int amplada;
 
-    public CarreterraTerra(String nomacc, boolean estat, double longitud,int amplada) {
+    public CarreterraTerra(String nomacc, boolean estat, float longitud,int amplada) {
         super(nomacc, estat, longitud);
         this.amplada = amplada;
     }

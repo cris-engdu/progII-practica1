@@ -71,7 +71,7 @@ public class LlistaAccessos implements InLlistaAccessos{
 
         for (Acces a: llistaaccessos){
             if (a instanceof AccesTerra){
-                metres+=((AccesTerra) a).getLongitud();
+                metres+= (float) ((AccesTerra) a).getLongitud();
             }
         }
         return metres;

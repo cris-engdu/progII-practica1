@@ -6,27 +6,31 @@ import java.util.ArrayList;
 
 public class Camping implements InCamping {
     private String nomCamping;
-    private ArrayList<Allotjament> llistaAllotjaments ;
+    private LlistaAllotjaments llistaAllotjaments ;
+    private LlistaAccessos llistaAccessos;
 
     public Camping(String nomCamping){
         this.nomCamping=nomCamping;
-        this.llistaAllotjaments=new ArrayList<>();
+        this.llistaAllotjaments=new LlistaAllotjaments();
+        this.llistaAccessos=new LlistaAccessos();
 
 
     }
     @Override
     public String getNomCamping() {
-        return "";
+        return this.nomCamping;
     }
 
     @Override
     public String llistarAllotjaments(String estat) throws ExcepcioCamping {
-        return "";
+       return llistaAllotjaments.llistarAllotjaments(estat);
+
+
     }
 
     @Override
     public String llistarAccessos(String infoEstat) throws ExcepcioCamping {
-        return "";
+        return llistaAccessos.llistarAccessos(infoEstat.equals("Obert"));
     }
 
     @Override
@@ -46,12 +50,23 @@ public class Camping implements InCamping {
 
     @Override
     public int calculaAccessosNoAccessibles() {
-        return 0;
+        try {
+            return llistaAccessos.calculaAccessosNoAccessibles();
+        } catch (ExcepcioCamping e) {
+           return 0;
+
+        }
     }
 
     @Override
     public float calculaMetresTerra() {
-        return 0;
+        try {
+            return llistaAccessos.calculaMetresTerra();
+        } catch (ExcepcioCamping e) {
+            return 0;
+
+        }
+
     }
 
     @Override
@@ -61,9 +76,10 @@ public class Camping implements InCamping {
 
     @Override
     public void inicialitzaDadesCamping() {
-
+    llistaAllotjaments=new LlistaAllotjaments();
+    llistaAccessos=new LlistaAccessos();
     }
 }
-}
+
 
 
