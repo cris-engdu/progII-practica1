@@ -1,58 +1,66 @@
 package prog2.model;
 
-public class LlistaTasquesManteniment implements InTascaManteniment{
-    @Override
-    public int getNum() {
-        return 0;
+import prog2.vista.ExcepcioCamping;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class LlistaTasquesManteniment implements InLlistaTasquesManteniment{
+    private ArrayList<TascaManteniment> llistaTasquesManteniment;
+
+    public  LlistaTasquesManteniment() {
+        this.llistaTasquesManteniment=new ArrayList<>();
     }
 
     @Override
-    public TascaManteniment.TipusTascaManteniment getTipus() {
-        return null;
+    public void afegirTascaManteniment(int num, String tipus, Allotjament allotjament, String data, int dies) throws ExcepcioCamping {
+        if (!allotjament.isOperatiu()) {
+            throw new ExcepcioCamping("Aquest allotjament ja té una tasca de manteniment");
+        } else {
+            TascaManteniment tasca = new TascaManteniment(num, tipus, allotjament, data, dies);
+            this.llistaTasquesManteniment.add(tasca);
+            allotjament.setOperatiu(false);
+
+            // Cambiar valor de iluminación a allotjament
+            String ilum = tasca.getIluminacioAllotjament();
+            allotjament.setIluminacio(Allotjament.iluminacion.valueOf(ilum));
+        }
     }
 
     @Override
-    public Allotjament getAllotjament() {
-        return null;
+    public void completarTascaManteniment(TascaManteniment tasca) throws ExcepcioCamping {
+        boolean isTascaTrobada = llistaTasquesManteniment.remove(tasca);
+        if (!isTascaTrobada) {
+            throw new ExcepcioCamping("La tasca de manteniment introduïda no existeix");
+        }
+        tasca.getAllotjament().obrirAllotjament();
     }
 
     @Override
-    public String getData() {
-        return "";
+    public String llistarTasquesManteniment() throws ExcepcioCamping {
+        if (llistaTasquesManteniment.size() == 0) {
+            throw new ExcepcioCamping("No hi ha tasques de manteniment.");
+        }
+
+        String strLlista = "";
+        Iterator<TascaManteniment> it = llistaTasquesManteniment.iterator();
+        while (it.hasNext()) {
+            TascaManteniment tasca = it.next();
+            strLlista += tasca.toString();
+            strLlista += "\n";
+        }
+        return strLlista;
     }
 
     @Override
-    public int getDies() {
-        return 0;
-    }
-
-    @Override
-    public void setNum(int num_) {
-
-    }
-
-    @Override
-    public void setTipus(TascaManteniment.TipusTascaManteniment tipus_) {
-
-    }
-
-    @Override
-    public void setAllotjament(Allotjament allotjament_) {
-
-    }
-
-    @Override
-    public void setData(String data_) {
-
-    }
-
-    @Override
-    public void setDies(int dies_) {
-
-    }
-
-    @Override
-    public String getIluminacioAllotjament() {
-        return "";
+    public TascaManteniment getTascaManteniment(int num) throws ExcepcioCamping {
+        Iterator<TascaManteniment> it = llistaTasquesManteniment.iterator();
+        while (it.hasNext()) {
+            TascaManteniment tasca = it.next();
+            if (tasca.getNum() == num) {
+                return tasca;
+            }
+        }
+        throw new ExcepcioCamping("No existeix la tasca amb el numero " + num);
     }
 }

@@ -7,6 +7,14 @@ public class TascaManteniment implements InTascaManteniment{
     private String data;
     private int dies;
 
+    public TascaManteniment(int num, Allotjament allotjament, TipusTascaManteniment tipus, String data, int dies){
+        this.num = num;
+        this.allotjament = allotjament;
+        this.tipus = tipus;
+        this.data = data;
+        this.dies = dies;
+    }
+
     @Override
     public int getNum() {
         return num;
@@ -54,21 +62,25 @@ public class TascaManteniment implements InTascaManteniment{
 
     @Override
     public void setDies(int dies_) {
-        this.dies = dies_
+        this.dies = dies_;
     }
 
     @Override
     public String getIluminacioAllotjament() {
         TipusTascaManteniment tipus_allotjament = getTipus();
-        int ilum;
+        String ilum;
         switch (tipus_allotjament) {
-            case Reparacio -> ilum = 50;
-            case Neteja -> ilum = 100;
-            case RevisioTecnica ->  ilum = 50;
-            case Desinfeccio ->  ilum = 0;
-            default -> ilum = 100;
+            case Reparacio -> ilum = "MITJANA";
+            case Neteja -> ilum = "ALTA";
+            case RevisioTecnica ->  ilum = "MITJANA";
+            case Desinfeccio ->  ilum = "RES";
+            default -> ilum = "ALTA";
         }
-        return "Il·luminació de l'allotjament:  " + ilum;
+        return ilum;
+    }
+
+    public String toString() {
+        return "Num: " + num + " Allotjament: " + allotjament.toString() + "tipus: " + tipus.toString() + "data: " + data + "dies: " + dies;
     }
 
     public static enum TipusTascaManteniment {
