@@ -67,11 +67,15 @@ public class Allotjament implements InAllotjament {
 
     @Override
     public void tancarAllotjament(TascaManteniment tasca) {
-
+            this.operatiu=false;
+            this.Iluminacio=iluminacion.RES;
     }
 
     @Override
     public void obrirAllotjament() {
+        this.operatiu=true;
+        this.Iluminacio=iluminacion.ALTA;
+
 
     }
 

@@ -1,40 +1,47 @@
 package prog2.model;
 
+import prog2.vista.ExcepcioCamping;
+
 import java.util.ArrayList;
 
-public abstract class Acces implements InAcces{
+public abstract class Acces   implements InAcces{
     private String nom;
+    private boolean estat;
     private boolean accessibilitat;
-    private boolean operatiu;
-    private ArrayList<Allotjament> llistaAllotjaments;
-    public Acces(String nom, boolean accessibilitat, boolean isObert) {
-        this.nom = nom;
-        this.accessibilitat = accessibilitat;
-        this.operatiu = isObert;
-        this.llistaAllotjaments=new ArrayList<>();
+    private LlistaAllotjaments llistaAllotjaments;
+
+    public Acces(String nomacc,boolean estat,boolean accessibilitat, LlistaAllotjaments llistaAllotjaments) {
+
+        this.nom=nomacc;
+        this.estat=estat;
+        this.accessibilitat=accessibilitat;
+        this.llistaAllotjaments=llistaAllotjaments;
+
     }
 
 
 
 
     @Override
-    public void afegirAllotjament(Allotjament allotjament) {llistaAllotjaments.add(allotjament);
+    public void afegirAllotjament(Allotjament allotjament)  {
+        this.llistaAllotjaments.afegirAllotjament(allotjament);
     }
 
     @Override
     public void tancarAcces() {
-        operatiu = false;
+
+        this.estat=false;
     }
 
     @Override
-    public void obrirAcces() { operatiu = true;}
+    public void obrirAcces() {
+    this.estat=true;
+    }
 
     @Override
     public boolean isAccessibilitat() {
-        return accessibilitat;
+        return this.accessibilitat;
     }
-
-    public void setAccessibilitat(boolean accessibilitat) {this.accessibilitat = accessibilitat;}
 
     @Override
     public String getNom() {
@@ -43,11 +50,11 @@ public abstract class Acces implements InAcces{
 
     @Override
     public boolean getEstat() {
-        return operatiu;
+        return estat;
     }
 
     @Override
     public LlistaAllotjaments getAAllotjaments() {
-        return llistaAllotjaments;
+        return this.llistaAllotjaments;
     }
 }
