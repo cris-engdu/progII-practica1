@@ -10,8 +10,8 @@ public class Casa extends Allotjament{
     private int num_habitacions;
     private int capacitat_places;
 
-    public Casa(String nom, String id, long estada_min_alta, long estada_min_baixa, boolean operatiu, String ilum,String mida,int num_habitacions,int capacitat_places) {
-        super(nom, id, estada_min_alta, estada_min_baixa, operatiu, ilum);
+    public Casa(String nom, String id, boolean operatiu, String ilum,String mida,int num_habitacions,int capacitat_places) {
+        super(nom, id, 0, 0, operatiu, ilum);
         this.mida= Casa.mides.valueOf(mida.toUpperCase());
         this.num_habitacions=num_habitacions;
         this.capacitat_places=capacitat_places;

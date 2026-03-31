@@ -8,7 +8,7 @@ public class Bungalow extends Casa {
 
     public Bungalow(String nom, String id, String mida,boolean operatiu,String ilum, int num_habitacions, int capacitat_places
             , int parking, boolean terrassa, boolean televisio, boolean aire_fred) {
-        super(nom, id,0,0,operatiu,ilum, mida,num_habitacions, capacitat_places);
+        super(nom, id,operatiu,ilum, mida,num_habitacions, capacitat_places);
         this.parking = parking;
         this.terrassa = terrassa;
         this.televisio = televisio;
@@ -45,7 +45,7 @@ public class Bungalow extends Casa {
     public void setAire_fred(boolean aire_fred){
         this.aire_fred=aire_fred;
     }
-    @Override
+
     public boolean correcteFuncionament() {
         return aire_fred;
     }
