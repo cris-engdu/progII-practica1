@@ -1,9 +1,9 @@
 package prog2.model;
 
-public class CarreterraTerra extends AccesTerra{
-    private int amplada;
+public class CarreteraTerra extends AccesTerra{
+    private float amplada;
 
-    public CarreterraTerra(String nomacc, boolean estat, float longitud,int amplada) {
+    public CarreteraTerra(String nomacc, boolean estat, float longitud, float amplada) {
         super(nomacc, estat, longitud);
         this.amplada = amplada;
     }
@@ -12,7 +12,7 @@ public class CarreterraTerra extends AccesTerra{
         return this.amplada;
     }
 
-    public void setAmplada(int amplada) {
+    public void setAmplada(float amplada) {
         this.amplada = amplada;
     }
 
