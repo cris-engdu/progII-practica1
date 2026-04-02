@@ -56,6 +56,9 @@ public class LlistaAccessos implements InLlistaAccessos{
 
     @Override
     public int calculaAccessosNoAccessibles() throws ExcepcioCamping {
+        if (llistaaccessos.isEmpty()){
+            throw new ExcepcioCamping("La llista d'accessos està buida.");
+        }
         int cont=0;
         for (Acces a: llistaaccessos){
             if (!a.isAccessibilitat()){
@@ -67,6 +70,10 @@ public class LlistaAccessos implements InLlistaAccessos{
 
     @Override
     public float calculaMetresTerra() throws ExcepcioCamping {
+        if  (llistaaccessos.isEmpty()){
+            throw new ExcepcioCamping("La llista d'accessos està buida");
+        }
+
         float metres=0;
 
         for (Acces a: llistaaccessos){

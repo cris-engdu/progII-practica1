@@ -17,7 +17,7 @@ public class LlistaTasquesManteniment implements InLlistaTasquesManteniment{
         if (!allotjament.isOperatiu()) {
             throw new ExcepcioCamping("Aquest allotjament ja té una tasca de manteniment");
         } else {
-            TascaManteniment tasca = new TascaManteniment(num, tipus, allotjament, data, dies);
+            TascaManteniment tasca = new TascaManteniment(num, TascaManteniment.TipusTascaManteniment.valueOf(tipus), allotjament, data, dies);
             this.llistaTasquesManteniment.add(tasca);
             allotjament.setOperatiu(false);
 

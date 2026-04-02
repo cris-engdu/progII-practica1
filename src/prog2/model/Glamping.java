@@ -4,7 +4,7 @@ public class Glamping extends Casa {
     private String material; //material de la tenda de campanya: fusta o tela
     private boolean casa_mascotas;
 
-    public Glamping(String nom, String id, boolean operatiu, String ilum, String mida, int num_habitacions, int capacitat_places) {
+    public Glamping(String nom, String id, boolean operatiu, String ilum, float mida, int num_habitacions, int capacitat_places, String material,  boolean casa_mascotas) {
         super(nom, id, operatiu, ilum, mida, num_habitacions, capacitat_places);
         this.material=material;
         this.casa_mascotas=casa_mascotas;

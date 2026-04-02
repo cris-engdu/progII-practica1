@@ -2,15 +2,15 @@ package prog2.model;
 
 public class TascaManteniment implements InTascaManteniment{
     private int num;
-    private Allotjament allotjament;
     private TipusTascaManteniment tipus;
+    private Allotjament allotjament;
     private String data;
     private int dies;
 
-    public TascaManteniment(int num, Allotjament allotjament, TipusTascaManteniment tipus, String data, int dies){
+    public TascaManteniment(int num, TipusTascaManteniment tipus, Allotjament allotjament, String data, int dies){
         this.num = num;
-        this.allotjament = allotjament;
         this.tipus = tipus;
+        this.allotjament = allotjament;
         this.data = data;
         this.dies = dies;
     }

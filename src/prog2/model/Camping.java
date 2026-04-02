@@ -55,7 +55,7 @@ public class Camping implements InCamping{ //instancia de llistareserves y de ar
         // Allotjament que rebrà la tasca de manteniment
         Allotjament allot = llistaAllotjaments.getAllotjament(idAllotjament);
 
-        llistaTasquesManteniment.afegirTascaManteniment(num, tipus, allot, TascaManteniment.TipusTascaManteniment.valueOf(tipus), data, dies);
+        llistaTasquesManteniment.afegirTascaManteniment(num, tipus, allot, data, dies);
         llistaAccessos.actualitzaEstatAccessos();
     }
 
@@ -68,12 +68,12 @@ public class Camping implements InCamping{ //instancia de llistareserves y de ar
     }
 
     @Override
-    public int calculaAccessosNoAccessibles() {
+    public int calculaAccessosNoAccessibles() throws ExcepcioCamping {
         return llistaAccessos.calculaAccessosNoAccessibles();
     }
 
     @Override
-    public float calculaMetresTerra() {
+    public float calculaMetresTerra() throws ExcepcioCamping {
         return llistaAccessos.calculaMetresTerra();
     }
 
@@ -83,7 +83,7 @@ public class Camping implements InCamping{ //instancia de llistareserves y de ar
     }
 
     @Override
-    public void inicialitzaDadesCamping() {
+    public void inicialitzaDadesCamping() throws ExcepcioCamping {
         llistaAccessos.buidar();
 
         float asfalt = 200;

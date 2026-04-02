@@ -8,11 +8,11 @@ public class CarreteraTerra extends AccesTerra{
         this.amplada = amplada;
     }
 
-    public int getAmplada() {
+    public float getAmplada() {
         return this.amplada;
     }
 
-    public void setAmplada(float amplada) {
+    public void setAmplada(int amplada) {
         this.amplada = amplada;
     }
 

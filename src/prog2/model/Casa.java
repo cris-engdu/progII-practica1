@@ -2,22 +2,18 @@ package prog2.model;
 
 public class Casa extends Allotjament{
 
-    public enum mides{ // nomes poden ser aquest tres tipus
-        PETITA,MITJANA,GRAN;
-    }
-
-    private mides mida;
+    private float mida;
     private int num_habitacions;
     private int capacitat_places;
 
-    public Casa(String nom, String id, boolean operatiu, String ilum,String mida,int num_habitacions,int capacitat_places) {
+    public Casa(String nom, String id, boolean operatiu, String ilum, float mida,int num_habitacions,int capacitat_places) {
         super(nom, id, 0, 0, operatiu, ilum);
-        this.mida= Casa.mides.valueOf(mida.toUpperCase());
+        this.mida=mida;
         this.num_habitacions=num_habitacions;
         this.capacitat_places=capacitat_places;
     }
 
-    public mides getMida(){
+    public float getMida(){
         return this.mida;
     }
 
@@ -28,7 +24,7 @@ public class Casa extends Allotjament{
         return this.capacitat_places;
     }
 
-    public void setMida(mides m){
+    public void setMida(float m){
         this.mida=m;
     }
     public void setNum_habitacions( int n_h){

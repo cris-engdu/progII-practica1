@@ -40,6 +40,19 @@ public class LlistaAllotjaments implements InLlistaAllotjaments{
         return resultat;
     }
 
+    public String llistarAllotjamentsTots() throws ExcepcioCamping {
+        String resultat="";
+
+        for (Allotjament a:llistaAllotjaments){
+            resultat+=a.toString();
+        }
+        if (resultat.equals("")){
+            throw new ExcepcioCamping("No hi ha cap allotjament.");
+        }
+
+        return resultat;
+    }
+
     @Override
     public boolean containsAllotjamentOperatiu() {
 
