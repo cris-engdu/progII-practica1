@@ -41,14 +41,16 @@ public class LlistaAllotjaments implements InLlistaAllotjaments{
     }
 
     public String llistarAllotjamentsTots() throws ExcepcioCamping {
+        if (llistaAllotjaments.isEmpty()){
+            throw new ExcepcioCamping("Error,no hi ha cap allotjament.");
+        }
+
         String resultat="";
 
         for (Allotjament a:llistaAllotjaments){
             resultat+=a.toString();
         }
-        if (resultat.equals("")){
-            throw new ExcepcioCamping("No hi ha cap allotjament.");
-        }
+
 
         return resultat;
     }
