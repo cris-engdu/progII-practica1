@@ -38,7 +38,7 @@ public class LlistaTasquesManteniment implements InLlistaTasquesManteniment{
 
     @Override
     public String llistarTasquesManteniment() throws ExcepcioCamping {
-        if (llistaTasquesManteniment.size() == 0) {
+        if (llistaTasquesManteniment.isEmpty()) {
             throw new ExcepcioCamping("No hi ha tasques de manteniment.");
         }
 

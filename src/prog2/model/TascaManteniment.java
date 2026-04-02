@@ -70,11 +70,11 @@ public class TascaManteniment implements InTascaManteniment{
         TipusTascaManteniment tipus_allotjament = getTipus();
         String ilum;
         switch (tipus_allotjament) {
-            case Reparacio -> ilum = "MITJANA";
-            case Neteja -> ilum = "ALTA";
-            case RevisioTecnica ->  ilum = "MITJANA";
-            case Desinfeccio ->  ilum = "RES";
-            default -> ilum = "ALTA";
+            case Reparacio -> ilum = "50%";
+            case Neteja -> ilum = "100%";
+            case RevisioTecnica ->  ilum = "50%";
+            case Desinfeccio ->  ilum = "0%";
+            default -> ilum = "100%";
         }
         return ilum;
     }

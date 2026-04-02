@@ -1,10 +1,11 @@
 package prog2.model;
+import java.io.*;
 
 import prog2.vista.ExcepcioCamping;
 
 import java.util.ArrayList;
 
-public class Camping implements InCamping{ //instancia de llistareserves y de arraylist.. arraylist allotjament i reserva
+public class Camping implements InCamping{
     private String nomCamping;
     private LlistaAllotjaments llistaAllotjaments;
     private LlistaAccessos llistaAccessos;
@@ -79,7 +80,29 @@ public class Camping implements InCamping{ //instancia de llistareserves y de ar
 
     @Override
     public void save(String camiDesti) throws ExcepcioCamping {
+        try{
+            FileOutputStream file= new FileOutputStream(camiDesti);
+            ObjectOutputStream obj= new ObjectOutputStream(file);
+            obj.writeObject(this);
+            obj.close();
+            file.close();
+        } catch (IOException e) {
+            throw new ExcepcioCamping("Error al guardar les dades del camping");
+        }
+    }
 
+
+    static Camping load(String camiOrigen) throws ExcepcioCamping {
+        try{
+            FileInputStream file= new FileInputStream(camiOrigen);
+            ObjectInputStream obj=new ObjectInputStream(file);
+            Camping camping= (Camping) obj.readObject();
+            obj.close();
+            file.close();
+            return camping;
+        } catch (IOException  | ClassNotFoundException e) {
+            throw new ExcepcioCamping("Error al carregar les dades del camping");
+        }
     }
 
     @Override

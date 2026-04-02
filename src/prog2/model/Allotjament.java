@@ -1,11 +1,32 @@
 package prog2.model;
 
+import prog2.vista.ExcepcioCamping;
+
 import java.time.LocalDate;
 
 public class Allotjament implements InAllotjament {
     public enum iluminacion{
-        ALTA, MITJANA, RES
-    }
+        ALTA("100%"), MITJANA("50"), RES("0%");
+
+        private final String val;
+
+        iluminacion(String s) {
+            this.val=s;
+        }
+        public String getVal(){
+            return val;
+        }
+        public static iluminacion fromString(String text) throws ExcepcioCamping {
+            for (iluminacion il:iluminacion.values()){
+                if (il.val.equals(text)){
+                    return il;
+                }
+            }
+
+           throw new ExcepcioCamping("eror");
+        }
+
+          }
     private String nom;
     private String id;
     private long estada_min_alta;
@@ -15,13 +36,17 @@ public class Allotjament implements InAllotjament {
 
 
 
-    public Allotjament(String nom, String id, long estada_min_alta, long estada_min_baixa,boolean operatiu,String ilum) {
+    public Allotjament(String nom, String id, long estada_min_alta, long estada_min_baixa,boolean operatiu,String ilum)  {
         this.nom = nom;
         this.id = id;
         this.estada_min_alta = estada_min_alta;
         this.estada_min_baixa = estada_min_baixa;
         this.operatiu=operatiu;
-        this.Iluminacio=iluminacion.valueOf(ilum);
+        try {
+            this.Iluminacio=iluminacion.fromString(ilum);
+        } catch (ExcepcioCamping e) {
+            throw new RuntimeException(e);
+        }
 
     }
 //getters
@@ -60,8 +85,8 @@ public class Allotjament implements InAllotjament {
         this.operatiu=operatiu;
     }
 
-    public iluminacion  getIluminacio(){
-        return this.Iluminacio;
+    public String  getIluminacio(){
+        return this.Iluminacio.getVal();
     }
 
 //setters
@@ -74,7 +99,12 @@ public class Allotjament implements InAllotjament {
     @Override
     public void tancarAllotjament(TascaManteniment tasca) {
             this.operatiu=false;
-            this.Iluminacio=iluminacion.RES;
+            this.Iluminacio=switch (tasca.getTipus()){
+                case Reparacio -> iluminacion.MITJANA;
+                case Neteja -> iluminacion.ALTA;
+                case RevisioTecnica -> iluminacion.MITJANA;
+                case Desinfeccio -> iluminacion.RES;
+            };
     }
 
     @Override
@@ -93,7 +123,7 @@ public class Allotjament implements InAllotjament {
     public String toString() {
         String str = "Nom=" + this.getNom() + ", Id=" + this.getId() + ", estada mínima en temp ALTA: " +
                 this.getEstadaMinima(InAllotjament.Temp.ALTA) + ", estada mínima en temp BAIXA: " +
-                this.getEstadaMinima(InAllotjament.Temp.BAIXA) + ", estat operatiu: " +(this.operatiu ? "Si" : "No")+ ", iluminacio: " +this.Iluminacio;
+                this.getEstadaMinima(InAllotjament.Temp.BAIXA) + ", estat operatiu: " +(this.operatiu ? "Si" : "No")+ ", iluminacio: " +this.Iluminacio.getVal();
         return str;
     }
 }
