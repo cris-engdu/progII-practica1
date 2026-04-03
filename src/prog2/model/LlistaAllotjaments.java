@@ -32,7 +32,7 @@ public class LlistaAllotjaments implements InLlistaAllotjaments, Serializable {
         for (Allotjament a:llistaAllotjaments){
             if (a.isOperatiu() && estat.equals("Operatiu") || !a.isOperatiu() && estat.equals("No Operatiu")){
                 resultat+=a.toString();
-
+                resultat+="\n";
             }
         }
         if (resultat.equals("")){
@@ -51,6 +51,7 @@ public class LlistaAllotjaments implements InLlistaAllotjaments, Serializable {
 
         for (Allotjament a:llistaAllotjaments){
             resultat+=a.toString();
+            resultat+="\n";
         }
 
 

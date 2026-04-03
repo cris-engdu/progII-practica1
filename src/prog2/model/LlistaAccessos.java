@@ -37,6 +37,7 @@ public class LlistaAccessos implements InLlistaAccessos, Serializable {
         for (Acces a: llistaaccessos){
             if (a.getEstat()==estat){
                 imprimir += a.toString();
+                imprimir += "\n";
             }
         }
         if (imprimir.equals("")){

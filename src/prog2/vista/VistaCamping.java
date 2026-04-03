@@ -16,7 +16,6 @@ public class VistaCamping {
     // Opcions del menu
     static private enum OpcionsMenuPrincipal {INFO_ALLOT,INFO_ALLOT_OPERATIUS,INFO_ALLOT_NO_OPERATIUS,INFO_ACCESSOS_OBERTS,INFO_ACCESSOS_TANCATS,INFO_TASQUES,AFEGIR_TASCA,COMPLETAR_TASCA,
         NUM_ACCESSOS_NO_ACCESSIBILITAT,METRES_ACCESSOS_TERRA,GUARDAR,RECUPERAR,SORTIR};
-    static private enum OpcionsSubmenu1 {MENU_S1_OPCIO1,MENU_S1_OPCIO2,MENU_S1_SORTIR};
 
     // Descripcions de les opcions
     static private String[] descMenuPrincipal = {"Llistar la informació de tots els allotjaments",
@@ -27,6 +26,7 @@ public class VistaCamping {
                                                 "Llistar la informació de les tasques de manteniments actives",
                                                 "Afegir una tasca de manteniment",
                                                 "Completar una tasca de manteniment",
+                                                "Calcular i mostrar el número total d'accessos no accessibles amb vehicle",
                                                 "Calcular i mostrar el número total de metres dels accessos de terra",
                                                 "Guardar càmping",
                                                 "Recuperar càmping",
@@ -48,7 +48,7 @@ public class VistaCamping {
             // Demanem una opcio
             opcio=menu.getOpcio(sc);
 
-            // Fem les accions necessÃ ries
+            // Fem les accions necessàries
             switch(opcio) {
                 case INFO_ALLOT:
                     // Mostrem la llista de tots els allotjaments
@@ -74,10 +74,10 @@ public class VistaCamping {
                     }
                     break;
                 case INFO_ALLOT_NO_OPERATIUS:
-                    System.out.println("Els allotjaments operatius del camping son els següents: ");
+                    System.out.println("Els allotjaments no operatius del camping son els següents: ");
 
                     try {
-                        String outputAllotjaments = camping.getLlistaAllotjaments().llistarAllotjaments("No operatiu");
+                        String outputAllotjaments = camping.llistarAllotjaments("No Operatiu");
                         System.out.println(outputAllotjaments);
                     } catch (ExcepcioCamping e) {
                         System.out.println(e.getMessage());
@@ -109,6 +109,7 @@ public class VistaCamping {
                         // Preguntar dades de la tasca a afegir a l'usuari
                         System.out.println("Introdueix el número de la tasca");
                         int numTasca = sc.nextInt();
+                        sc.nextLine();
 
                         System.out.println("Introdueix el id de l'allotjament on vols realitzar la tasca");
                         String idAllotjament = sc.nextLine();
