@@ -67,7 +67,7 @@ public class VistaCamping {
                     System.out.println("Els allotjaments operatius del camping son els següents: ");
 
                     try {
-                        String outputAllotjaments = camping.getLlistaAllotjaments().llistarAllotjaments("Operatiu");
+                        String outputAllotjaments = camping.llistarAllotjaments("Operatiu");
                         System.out.println(outputAllotjaments);
                     } catch (ExcepcioCamping e) {
                         System.out.println(e.getMessage());
@@ -84,22 +84,100 @@ public class VistaCamping {
                     }
                     break;
                 case INFO_ACCESSOS_OBERTS:
+                    try {
+                        System.out.println(camping.llistarAccessos("Obert"));
+                    } catch (ExcepcioCamping e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case INFO_ACCESSOS_TANCATS:
+                    try {
+                        System.out.println(camping.llistarAccessos("Tancat"));
+                    } catch (ExcepcioCamping e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case INFO_TASQUES:
+                    try {
+                        System.out.println(camping.llistarTasquesManteniment());
+                    } catch (ExcepcioCamping e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case AFEGIR_TASCA:
+                    try {
+                        // Preguntar dades de la tasca a afegir a l'usuari
+                        System.out.println("Introdueix el número de la tasca");
+                        int numTasca = sc.nextInt();
+
+                        System.out.println("Introdueix el id de l'allotjament on vols realitzar la tasca");
+                        String idAllotjament = sc.nextLine();
+
+                        System.out.println("Introdueix el tipus de tasca");
+                        String tipusTasca =  sc.nextLine();
+
+                        System.out.println("Introdueix la data de la tasca");
+                        String dataTasca = sc.nextLine();
+
+                        System.out.println("Introdueix els dias esperats per realitzar la tasca");
+                        int diesTasca = sc.nextInt();
+
+                        // Crear i afegir tasca
+                        camping.afegirTascaManteniment(numTasca, tipusTasca, idAllotjament, dataTasca, diesTasca);
+
+                    } catch (ExcepcioCamping e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case COMPLETAR_TASCA:
+                    try {
+                        //Llistar tasques de manteniment
+                        System.out.println("Tasques de manteniment actives:");
+                        camping.llistarTasquesManteniment();
+
+                        // Preguntar a l'usuari i completar tasca
+                        System.out.println("Introdueix el número de la tasca que s'ha completat");
+                        int num = sc.nextInt();
+                        camping.completarTascaManteniment(num);
+
+                    } catch (ExcepcioCamping e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case NUM_ACCESSOS_NO_ACCESSIBILITAT:
+                    try {
+                        int cont = camping.calculaAccessosNoAccessibles();
+                        System.out.println("El número d'accessos que no proporcionen accessibiltat amb vehicle son: " + cont);
+                    } catch (ExcepcioCamping e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case METRES_ACCESSOS_TERRA:
+                    try {
+                        float cont = camping.calculaMetresTerra();
+                        System.out.println("El número total de metres dels accessos de terra es: " + cont);
+                    } catch (ExcepcioCamping e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case GUARDAR:
+                    try {
+                        System.out.println("Introdueix la ruta del fitxer on vols guardar les dades");
+                        String cami = sc.nextLine();
+                        camping.save(cami);
+                        System.out.println("Les dades del camping s'han guardat correctament");
+                    } catch (ExcepcioCamping e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case RECUPERAR:
+                    try {
+                        System.out.println("Introdueix la ruta del fitxer des del qual vols carregar les dades");
+                        String cami = sc.nextLine();
+                        this.camping = camping.load(cami);
+                    } catch (ExcepcioCamping e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case SORTIR:
                     System.out.println("Fins aviat!");
@@ -108,7 +186,5 @@ public class VistaCamping {
 
         } while(opcio!=OpcionsMenuPrincipal.SORTIR);
     }
-
-
 }
 

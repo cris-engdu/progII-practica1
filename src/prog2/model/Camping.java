@@ -98,7 +98,7 @@ public class Camping implements InCamping{
     }
 
     //en aquesta fem el amteix pero a la inversa, hem de llegir les dades d'un fitxer per tal generar el programa amb aquestes dades
-    static Camping load(String camiOrigen) throws ExcepcioCamping {
+    public static Camping load(String camiOrigen) throws ExcepcioCamping {
         try{
             FileInputStream file= new FileInputStream(camiOrigen);
             ObjectInputStream obj=new ObjectInputStream(file);
