@@ -2,9 +2,10 @@ package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class LlistaAllotjaments implements InLlistaAllotjaments{
+public class LlistaAllotjaments implements InLlistaAllotjaments, Serializable {
     private ArrayList<Allotjament> llistaAllotjaments;
 
     public  LlistaAllotjaments() {
@@ -24,6 +25,7 @@ public class LlistaAllotjaments implements InLlistaAllotjaments{
         llistaAllotjaments.clear();;
     }
 
+    //en aquesta funcio com l'estat es boolea i en aquesta es String, es mira si aquest es operatiu o no i es mostra els allotjaments corresponents sino mostra un error.
     @Override
     public String llistarAllotjaments(String estat) throws ExcepcioCamping {
         String resultat="";
@@ -54,7 +56,7 @@ public class LlistaAllotjaments implements InLlistaAllotjaments{
 
         return resultat;
     }
-
+//retorna true or false si a la llista hi ha algu allotjament operatiu
     @Override
     public boolean containsAllotjamentOperatiu() {
 
@@ -68,6 +70,8 @@ public class LlistaAllotjaments implements InLlistaAllotjaments{
     }
 
 
+
+    //busca si existeix l'allotjament que es passa com a parametre
     @Override
     public boolean contains(Allotjament allotjament) {
 

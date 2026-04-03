@@ -6,7 +6,7 @@ public class AccesAsfaltat extends Acces{
         super(nomacc, estat);
         this.m2=m2;
     }
-
+//getter i setter dels metres quadrats
     public double getM2() {
         return this.m2;
     }

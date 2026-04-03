@@ -10,7 +10,7 @@ public class CarreteraAsfaltada extends AccesAsfaltat {
     public boolean isAccessibilitat(){
         return true;
     }
-
+//getter i setter de pes maxim
     public float getPesmaxim() {
         return this.pesmaxim;
     }

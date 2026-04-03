@@ -5,7 +5,7 @@ public class CamiAsfaltat extends AccesAsfaltat {
     public CamiAsfaltat(String nomacc, boolean estat  , double m2) {
         super(nomacc, estat, m2);
     }
-
+//nomes modifiquem si es accessible o no
     @Override
     public boolean isAccessibilitat(){
         return false;

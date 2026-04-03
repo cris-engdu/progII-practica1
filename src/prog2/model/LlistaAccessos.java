@@ -2,14 +2,16 @@ package prog2.model;
 
 import prog2.vista.ExcepcioCamping;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class LlistaAccessos implements InLlistaAccessos{
+public class LlistaAccessos implements InLlistaAccessos, Serializable {
     private ArrayList<Acces> llistaaccessos;
 
     public LlistaAccessos(){
         this.llistaaccessos = new ArrayList<>();
     }
+    //funcio q s'encarrega de trobar accesos amb el mateix nom i sino els crea
     @Override
     public void afegirAcces(Acces acc) throws ExcepcioCamping {
 
@@ -28,6 +30,7 @@ public class LlistaAccessos implements InLlistaAccessos{
 
     }
 
+    //aquesta funcio nomes s'encarrega de trobar accesos amb el matexi estat que es passa i els concatena per mostrar-ho en pantalla
     @Override
     public String llistarAccessos(boolean estat) throws ExcepcioCamping {
         String imprimir="";
@@ -45,6 +48,9 @@ public class LlistaAccessos implements InLlistaAccessos{
 
     @Override
     public void actualitzaEstatAccessos() throws ExcepcioCamping {
+        if (llistaaccessos.isEmpty()){
+            throw new ExcepcioCamping("La llista d'accessos està buida.");
+        }
         for (Acces a: llistaaccessos){
             if (a.getAAllotjaments().containsAllotjamentOperatiu()){
                 a.obrirAcces();
@@ -54,6 +60,8 @@ public class LlistaAccessos implements InLlistaAccessos{
         }
     }
 
+
+    //nomes compta els accesos que no estan accesibles
     @Override
     public int calculaAccessosNoAccessibles() throws ExcepcioCamping {
         if (llistaaccessos.isEmpty()){
@@ -68,6 +76,7 @@ public class LlistaAccessos implements InLlistaAccessos{
         return cont;
     }
 
+    //aquesat funcio recorre la llista d'accessos per mirar si pertany a accesTerra i suma els seus metres de longtiud
     @Override
     public float calculaMetresTerra() throws ExcepcioCamping {
         if  (llistaaccessos.isEmpty()){

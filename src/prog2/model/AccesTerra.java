@@ -7,7 +7,7 @@ public class AccesTerra extends Acces{
         super(nomacc, estat );
         this.longitud=longitud;
     }
-
+//getter i setter de la variable longitud
     public double getLongitud() {
         return this.longitud;
     }

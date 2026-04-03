@@ -1,12 +1,14 @@
 package prog2.model;
 
-public class TascaManteniment implements InTascaManteniment{
+import java.io.Serializable;
+
+public class TascaManteniment implements InTascaManteniment, Serializable {
     private int num;
     private TipusTascaManteniment tipus;
     private Allotjament allotjament;
     private String data;
     private int dies;
-
+//constructor
     public TascaManteniment(int num, TipusTascaManteniment tipus, Allotjament allotjament, String data, int dies){
         this.num = num;
         this.tipus = tipus;
@@ -14,6 +16,8 @@ public class TascaManteniment implements InTascaManteniment{
         this.data = data;
         this.dies = dies;
     }
+
+    //getters
 
     @Override
     public int getNum() {
@@ -39,7 +43,7 @@ public class TascaManteniment implements InTascaManteniment{
     public int getDies() {
         return dies;
     }
-
+//setters
     @Override
     public void setNum(int num_) {
         this.num = num_;
@@ -64,7 +68,7 @@ public class TascaManteniment implements InTascaManteniment{
     public void setDies(int dies_) {
         this.dies = dies_;
     }
-
+// donar a cada tasca el seu valor d'iluminacio
     @Override
     public String getIluminacioAllotjament() {
         TipusTascaManteniment tipus_allotjament = getTipus();
