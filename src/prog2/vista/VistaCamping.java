@@ -15,7 +15,7 @@ public class VistaCamping {
 
     // Opcions del menu
     static private enum OpcionsMenuPrincipal {INFO_ALLOT,INFO_ALLOT_OPERATIUS,INFO_ALLOT_NO_OPERATIUS,INFO_ACCESSOS_OBERTS,INFO_ACCESSOS_TANCATS,INFO_TASQUES,AFEGIR_TASCA,COMPLETAR_TASCA,
-        NUM_ACCESSOS_NO_ACCESSIBILITAT,METRES_ACCESSOS_TERRA,GUARDAR,RECUPERAR,SORTIR};
+        NUM_ACCESSOS_NO_ACCESSIBILITAT,METRES_ACCESSOS_TERRA,GUARDAR,RECUPERAR,SORTIR}
 
     // Descripcions de les opcions
     static private String[] descMenuPrincipal = {"Llistar la informació de tots els allotjaments",
@@ -125,6 +125,7 @@ public class VistaCamping {
 
                         // Crear i afegir tasca
                         camping.afegirTascaManteniment(numTasca, tipusTasca, idAllotjament, dataTasca, diesTasca);
+                        System.out.println("La tasca s'ha afegit correctament");
 
                     } catch (ExcepcioCamping e) {
                         System.out.println(e.getMessage());

@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class Allotjament implements InAllotjament, Serializable {
     public enum iluminacion{
-        ALTA("100%"), MITJANA("50"), RES("0%");
+        ALTA("100%"), MITJANA("50%"), RES("0%");
 
         //creem una variable privada i final que no es modifica perque els tests reben el percentatge i no el nom.
         private final String val;

@@ -24,7 +24,7 @@ public class LlistaTasquesManteniment implements InLlistaTasquesManteniment, Ser
 
             // Cambiar valor de iluminación a allotjament
             String ilum = tasca.getIluminacioAllotjament();
-            allotjament.setIluminacio(Allotjament.iluminacion.valueOf(ilum));
+            allotjament.setIluminacio(Allotjament.iluminacion.fromString(ilum));
         }
     }
 
