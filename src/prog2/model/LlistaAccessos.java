@@ -11,17 +11,17 @@ public class LlistaAccessos implements InLlistaAccessos, Serializable {
     public LlistaAccessos(){
         this.llistaaccessos = new ArrayList<>();
     }
-    /*funcio q s'encarrega de trobar accesos amb el mateix nom i sino els crea*/
+    /**Funcio que s'encarrega de trobar accessos amb el mateix nom i si no els crea*/
     @Override
     public void afegirAcces(Acces acc) throws ExcepcioCamping {
 
-          for (Acces a: llistaaccessos){
-              if (a.equals(acc)) {
-                  throw new ExcepcioCamping("L'acces ja existeix");
-              }
-          }
+        for (Acces a: llistaaccessos){
+            if (a.equals(acc)) {
+                throw new ExcepcioCamping("L'acces ja existeix");
+            }
+        }
 
-            llistaaccessos.add(acc);
+        llistaaccessos.add(acc);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class LlistaAccessos implements InLlistaAccessos, Serializable {
 
     }
 
-    /*aquesta funcio nomes s'encarrega de trobar accesos amb el mateix estat que es passa i els concatena per mostrar-ho en pantalla*/
+    /**Aquesta funcio només s'encarrega de trobar accessos amb el mateix estat que es passa i els concatena per mostrar-ho en pantalla*/
     @Override
     public String llistarAccessos(boolean estat) throws ExcepcioCamping {
         String imprimir="";
@@ -62,7 +62,7 @@ public class LlistaAccessos implements InLlistaAccessos, Serializable {
     }
 
 
-    /*només compta els accessos que no estan accessibles*/
+    /**Només compta els accessos que no estan accessibles*/
     @Override
     public int calculaAccessosNoAccessibles() throws ExcepcioCamping {
         if (llistaaccessos.isEmpty()){
@@ -77,7 +77,7 @@ public class LlistaAccessos implements InLlistaAccessos, Serializable {
         return cont;
     }
 
-    /*aquesta funció recorre la llista d'accessos per mirar si pertany a accesTerra i suma els seus metres de longtiud*/
+    /**Aquesta funció recorre la llista d'accessos per mirar si pertany a accesTerra i suma els seus metres de longtiud*/
     @Override
     public float calculaMetresTerra() throws ExcepcioCamping {
         if  (llistaaccessos.isEmpty()){

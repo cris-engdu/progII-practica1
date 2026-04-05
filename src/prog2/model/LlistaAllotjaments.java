@@ -9,15 +9,15 @@ public class LlistaAllotjaments implements InLlistaAllotjaments, Serializable {
     private ArrayList<Allotjament> llistaAllotjaments;
 
     public  LlistaAllotjaments() {
-       this.llistaAllotjaments=new ArrayList<>();
+        this.llistaAllotjaments=new ArrayList<>();
     }
 
     @Override
     public void afegirAllotjament(Allotjament allotjament) throws ExcepcioCamping {
-                if (allotjament==null){
-                    throw new ExcepcioCamping("L'allotjament no pot ser nul");
-                }
-                llistaAllotjaments.add(allotjament);
+        if (allotjament==null){
+            throw new ExcepcioCamping("L'allotjament no pot ser nul");
+        }
+        llistaAllotjaments.add(allotjament);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class LlistaAllotjaments implements InLlistaAllotjaments, Serializable {
         llistaAllotjaments.clear();;
     }
 
-    /*en aquesta funcio com l'estat es boolea i en aquesta es String, es mira si aquest es operatiu o no i es mostra els allotjaments corresponents sino mostra un error.*/
+    /**En aquesta funcio com l'estat és booleà i en aquesta és String, es mira si aquest es operatiu o no i es mostra els allotjaments corresponents sino mostra un error.*/
     @Override
     public String llistarAllotjaments(String estat) throws ExcepcioCamping {
         String resultat="";
@@ -57,28 +57,28 @@ public class LlistaAllotjaments implements InLlistaAllotjaments, Serializable {
 
         return resultat;
     }
-/*retorna true or false si a la llista hi ha algu allotjament operatiu*/
+    /**Retorna true or false si a la llista hi ha algú allotjament operatiu*/
     @Override
     public boolean containsAllotjamentOperatiu() {
 
-         for (Allotjament a:llistaAllotjaments){
-             if (a.isOperatiu()){
+        for (Allotjament a:llistaAllotjaments){
+            if (a.isOperatiu()){
                 return true;
 
-             }
-         }
-         return false;
+            }
+        }
+        return false;
     }
 
 
 
-    /*busca si existeix l'allotjament que es passa com a parametre*/
+    /**Busca si existeix l'allotjament que es passa com a parametre*/
     @Override
     public boolean contains(Allotjament allotjament) {
 
         for(Allotjament a:llistaAllotjaments){
             if (a.equals(allotjament)){
-               return true;
+                return true;
             }
         }
         return false;

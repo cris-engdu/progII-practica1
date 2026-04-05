@@ -9,19 +9,19 @@ public class Allotjament implements InAllotjament, Serializable {
     public enum iluminacion{
         ALTA("100%"), MITJANA("50%"), RES("0%");
 
-        //creem una variable privada i final que no es modifica perque els tests reben el percentatge i no el nom.
+        //creem una variable privada i final que no es modifica perquè els tests reben el percentatge i no el nom.
         private final String val;
-    /*llavors fem una funció on passem la variable per modificar el percentatge*/
+        /**Llavors fem una funció on passem la variable per modificar el percentatge*/
         iluminacion(String s) {
             this.val=s;
         }
-        /*aqui la utilitzem per tal de retornar-nos el valor numeric de la il·luminacio*/
+        /*aquí la utilitzem per a retornar-nos el valor numeric de la il·luminacio*/
         public String getVal(){
             return val;
         }
 
-        /*aqui per ultim, farem una funcio on si es crida busquem si el percentatge esta en les diferents opcions que tenim i si esta
-        el retornem sino una excepcio d'error*/
+        /**Aquí per últim, farem una funcio on si es crida busquem si el percentatge està en les diferents opcions que tenim i si esta
+         el retornem sinó una excepció d'error*/
         public static iluminacion fromString(String text) throws ExcepcioCamping {
             for (iluminacion il:iluminacion.values()){
                 if (il.val.equals(text)){
@@ -29,10 +29,10 @@ public class Allotjament implements InAllotjament, Serializable {
                 }
             }
 
-           throw new ExcepcioCamping("Error, valor d' l·luminacio incorrecte");
+            throw new ExcepcioCamping("Error, valor d' l·luminacio incorrecte");
         }
 
-          }
+    }
     private String nom;
     private String id;
     private long estada_min_alta;
@@ -56,17 +56,17 @@ public class Allotjament implements InAllotjament, Serializable {
         }
 
     }
-//get nom
+    //get nom
     @Override
     public String getNom() {
         return this.nom;
     }
-//set nom
+    //set nom
     @Override
     public void setNom(String nom_p) {
         this.nom = nom_p;
     }
-//get i setter d'id
+    //get i setter d'id
     @Override
     public String getId() {
         return this.id;
@@ -76,7 +76,7 @@ public class Allotjament implements InAllotjament, Serializable {
     public void setId(String id_p) {
         this.id = id_p;
     }
-//estada minima
+    //estada minima
     @Override
     public long getEstadaMinima(Temp temp) {
         if (temp==Temp.ALTA){
@@ -98,7 +98,7 @@ public class Allotjament implements InAllotjament, Serializable {
         this.operatiu=operatiu;
     }
 //getter i setter d'iluminacio
-    /*En el getter el fem string ja que retornem el valor numeric del percentatge utilitzant un getter definit al principi*/
+    /**En el getter el fem string, ja que retornem el valor numeric del percentatge utilitzant un getter definit al principi*/
     public String  getIluminacio(){
         return this.Iluminacio.getVal();
     }
@@ -109,16 +109,16 @@ public class Allotjament implements InAllotjament, Serializable {
 
 
 
-/*aqui assignem a cada tasca el seu valor d'il·luminacio*/
+    /**Aquí assignem a cada tasca el seu valor d'il·luminacio*/
     @Override
     public void tancarAllotjament(TascaManteniment tasca) {
-            this.operatiu=false;
-            this.Iluminacio=switch (tasca.getTipus()){
-                case Reparacio -> iluminacion.MITJANA;
-                case Neteja -> iluminacion.ALTA;
-                case RevisioTecnica -> iluminacion.MITJANA;
-                case Desinfeccio -> iluminacion.RES;
-            };
+        this.operatiu=false;
+        this.Iluminacio=switch (tasca.getTipus()){
+            case Reparacio -> iluminacion.MITJANA;
+            case Neteja -> iluminacion.ALTA;
+            case RevisioTecnica -> iluminacion.MITJANA;
+            case Desinfeccio -> iluminacion.RES;
+        };
     }
 
     @Override
