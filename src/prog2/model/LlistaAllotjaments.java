@@ -25,7 +25,7 @@ public class LlistaAllotjaments implements InLlistaAllotjaments, Serializable {
         llistaAllotjaments.clear();;
     }
 
-    //en aquesta funcio com l'estat es boolea i en aquesta es String, es mira si aquest es operatiu o no i es mostra els allotjaments corresponents sino mostra un error.
+    /*en aquesta funcio com l'estat es boolea i en aquesta es String, es mira si aquest es operatiu o no i es mostra els allotjaments corresponents sino mostra un error.*/
     @Override
     public String llistarAllotjaments(String estat) throws ExcepcioCamping {
         String resultat="";
@@ -57,7 +57,7 @@ public class LlistaAllotjaments implements InLlistaAllotjaments, Serializable {
 
         return resultat;
     }
-//retorna true or false si a la llista hi ha algu allotjament operatiu
+/*retorna true or false si a la llista hi ha algu allotjament operatiu*/
     @Override
     public boolean containsAllotjamentOperatiu() {
 
@@ -72,7 +72,7 @@ public class LlistaAllotjaments implements InLlistaAllotjaments, Serializable {
 
 
 
-    //busca si existeix l'allotjament que es passa com a parametre
+    /*busca si existeix l'allotjament que es passa com a parametre*/
     @Override
     public boolean contains(Allotjament allotjament) {
 

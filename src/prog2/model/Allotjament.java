@@ -11,17 +11,17 @@ public class Allotjament implements InAllotjament, Serializable {
 
         //creem una variable privada i final que no es modifica perque els tests reben el percentatge i no el nom.
         private final String val;
-    //llavors fem una funció on passem la variable per modificar el percentatge
+    /*llavors fem una funció on passem la variable per modificar el percentatge*/
         iluminacion(String s) {
             this.val=s;
         }
-        //aqui la utilitzem per tal de retornar-nos el valor numeric de la il·luminacio
+        /*aqui la utilitzem per tal de retornar-nos el valor numeric de la il·luminacio*/
         public String getVal(){
             return val;
         }
 
-        //aqui per ultim, farem una funcio on si es crida busquem si el percentatge esta en les diferents opcions que tenim i si esta
-        // el retornem sino una excepcio d'error.
+        /*aqui per ultim, farem una funcio on si es crida busquem si el percentatge esta en les diferents opcions que tenim i si esta
+        el retornem sino una excepcio d'error*/
         public static iluminacion fromString(String text) throws ExcepcioCamping {
             for (iluminacion il:iluminacion.values()){
                 if (il.val.equals(text)){
@@ -98,7 +98,7 @@ public class Allotjament implements InAllotjament, Serializable {
         this.operatiu=operatiu;
     }
 //getter i setter d'iluminacio
-    //En el getter el fem string ja que retornem el valor numeric del percentatge utilitzant un getter definit al principi
+    /*En el getter el fem string ja que retornem el valor numeric del percentatge utilitzant un getter definit al principi*/
     public String  getIluminacio(){
         return this.Iluminacio.getVal();
     }
@@ -109,7 +109,7 @@ public class Allotjament implements InAllotjament, Serializable {
 
 
 
-// aqui assignem a cada tasca el seu valor d'iluminacio
+/*aqui assignem a cada tasca el seu valor d'il·luminacio*/
     @Override
     public void tancarAllotjament(TascaManteniment tasca) {
             this.operatiu=false;

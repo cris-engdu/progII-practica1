@@ -11,7 +11,7 @@ public class Camping implements InCamping, Serializable{
     private LlistaAccessos llistaAccessos;
     private LlistaTasquesManteniment llistaTasquesManteniment;
 
-    //en el constructor creem les noves llistes cridant al constructor corresponent de cada una
+    /*en el constructor creem les noves llistes cridant al constructor corresponent de cada una*/
     public Camping(String nomCamping){
         this.nomCamping=nomCamping;
         this.llistaAllotjaments = new LlistaAllotjaments();
@@ -29,16 +29,16 @@ public class Camping implements InCamping, Serializable{
         return this.nomCamping;
     }
 
-    //cridem a la mateixa funcio que tenim en la classe de llista d'allotjaments
+    /*cridem a la mateixa funcio que tenim en la classe de llista d'allotjament*/
     @Override
     public String llistarAllotjaments(String estat) throws ExcepcioCamping {
         return llistaAllotjaments.llistarAllotjaments(estat);
     }
 
 
-    //en aquesta funció tenim com una trampa, ja que es passa un string que esta definit en acces com estat, per tant, es comprova
-    //si el string es obert o tancat sino llança excepcio i despres es passa la variable que hem boolena cerda a la funcio en llista d'accesos
-    // on es la mateixa funcio pero la unica diferencia es que es passa una variable booleana i no un string
+    /*en aquesta funció tenim com una trampa, ja que es passa un string que esta definit en acces com estat, per tant, es comprova
+    si el string es obert o tancat sino llança excepcio i despres es passa la variable booleana que hem creat a la funcio a llista d'accesos
+     on es la mateixa funcio pero la unica diferencia es que es passa una variable booleana i no un string*/
     @Override
     public String llistarAccessos(String infoEstat) throws ExcepcioCamping {
         boolean estat;
@@ -83,20 +83,21 @@ public class Camping implements InCamping, Serializable{
     public float calculaMetresTerra() throws ExcepcioCamping {
         return llistaAccessos.calculaMetresTerra();
     }
-    //per tal de guardar les dades en un fitxer, creem els obejctes necessaris i sobretot, els tanquem despres d'utitzar-los
+    /*per tal de guardar les dades en un fitxer, creem els obejctes necessaris i sobretot, els tanquem despres d'utitzar-los*/
     @Override
     public void save(String camiDesti) throws ExcepcioCamping {
-        try{
-            FileOutputStream file= new FileOutputStream(camiDesti);
-            ObjectOutputStream obj= new ObjectOutputStream(file);
+        try {
+            FileOutputStream file = new FileOutputStream(camiDesti);
+            ObjectOutputStream obj = new ObjectOutputStream(file);
             obj.writeObject(this);
             obj.close();
             file.close();
         } catch (IOException e) {
             throw new ExcepcioCamping("Error al guardar les dades del camping");
+        }
     }
 
-    //en aquesta fem el amteix pero a la inversa, hem de llegir les dades d'un fitxer per tal generar el programa amb aquestes dades
+    /*en aquesta fem el mateix pero a la inversa, hem de llegir les dades d'un fitxer per tal generar el programa amb aquestes dades*/
     public static Camping load(String camiOrigen) throws ExcepcioCamping {
         try{
             FileInputStream file= new FileInputStream(camiOrigen);
@@ -109,7 +110,6 @@ public class Camping implements InCamping, Serializable{
             throw new ExcepcioCamping("Error al carregar les dades del camping");
         }
     }
-
         //en aquesta funcio, inicialitzem les dades amb els parametres definits a l'enunciat de la practica
     @Override
     public void inicialitzaDadesCamping() throws ExcepcioCamping {

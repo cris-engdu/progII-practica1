@@ -5,7 +5,7 @@ import prog2.vista.ExcepcioCamping;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-//serializable per poder treballar amb fixters
+//serializable per poder treballar amb fitxers
 public abstract class Acces   implements InAcces, Serializable {
     private String nom;
     private boolean estat;
@@ -22,11 +22,12 @@ public abstract class Acces   implements InAcces, Serializable {
     }
 
 
-//en aquesta funcio utlitzem un try catch ja que la funcio d'afegir hi es en llista d'allotjaments per tant la utilitzem
-    // i com funciona amb excepcions doncs aqui amb un try catch perque no ens doni cap error.
+
 
     @Override
     public void afegirAllotjament(Allotjament allotjament) {
+        //en aquesta funcio utilitzem un try catch ja que la funcio d'afegir hi es en llista d'allotjaments per tant la utilitzem
+        // i com aquesta funciona amb excepcions doncs aqui fem servir un try catch perquè no ens doni cap error.
         try {
             llistaAllotjaments.afegirAllotjament(allotjament);
         } catch (ExcepcioCamping e) {

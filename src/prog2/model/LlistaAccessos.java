@@ -11,7 +11,7 @@ public class LlistaAccessos implements InLlistaAccessos, Serializable {
     public LlistaAccessos(){
         this.llistaaccessos = new ArrayList<>();
     }
-    //funcio q s'encarrega de trobar accesos amb el mateix nom i sino els crea
+    /*funcio q s'encarrega de trobar accesos amb el mateix nom i sino els crea*/
     @Override
     public void afegirAcces(Acces acc) throws ExcepcioCamping {
 
@@ -30,7 +30,7 @@ public class LlistaAccessos implements InLlistaAccessos, Serializable {
 
     }
 
-    //aquesta funcio nomes s'encarrega de trobar accesos amb el matexi estat que es passa i els concatena per mostrar-ho en pantalla
+    /*aquesta funcio nomes s'encarrega de trobar accesos amb el mateix estat que es passa i els concatena per mostrar-ho en pantalla*/
     @Override
     public String llistarAccessos(boolean estat) throws ExcepcioCamping {
         String imprimir="";
@@ -62,7 +62,7 @@ public class LlistaAccessos implements InLlistaAccessos, Serializable {
     }
 
 
-    //nomes compta els accesos que no estan accesibles
+    /*només compta els accessos que no estan accessibles*/
     @Override
     public int calculaAccessosNoAccessibles() throws ExcepcioCamping {
         if (llistaaccessos.isEmpty()){
@@ -77,7 +77,7 @@ public class LlistaAccessos implements InLlistaAccessos, Serializable {
         return cont;
     }
 
-    //aquesat funcio recorre la llista d'accessos per mirar si pertany a accesTerra i suma els seus metres de longtiud
+    /*aquesta funció recorre la llista d'accessos per mirar si pertany a accesTerra i suma els seus metres de longtiud*/
     @Override
     public float calculaMetresTerra() throws ExcepcioCamping {
         if  (llistaaccessos.isEmpty()){
