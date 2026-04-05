@@ -4,7 +4,6 @@ import java.io.*;
 import prog2.vista.ExcepcioCamping;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 
 public class Camping implements InCamping, Serializable{
     private String nomCamping;
@@ -88,18 +87,13 @@ public class Camping implements InCamping, Serializable{
     @Override
     public void save(String camiDesti) throws ExcepcioCamping {
         try{
-            System.out.println(System.getProperty("user.dir"));
             FileOutputStream file= new FileOutputStream(camiDesti);
             ObjectOutputStream obj= new ObjectOutputStream(file);
             obj.writeObject(this);
             obj.close();
             file.close();
         } catch (IOException e) {
-            e.printStackTrace();
-            throw new ExcepcioCamping("Error al guardar les dades del camping / IOException");
-        } catch (InputMismatchException e) {
-            throw new ExcepcioCamping("Error al guardar les dades del camping / InputMismatch");
-        }
+            throw new ExcepcioCamping("Error al guardar les dades del camping");
     }
 
     //en aquesta fem el amteix pero a la inversa, hem de llegir les dades d'un fitxer per tal generar el programa amb aquestes dades
