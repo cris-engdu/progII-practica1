@@ -84,7 +84,7 @@ public class TascaManteniment implements InTascaManteniment, Serializable {
     }
 
     public String toString() {
-        return "Num: " + num + " Allotjament: " + allotjament.toString() + "tipus: " + tipus.toString() + "data: " + data + "dies: " + dies;
+        return "Num: " + num + " Allotjament: " + allotjament.toString() + " tipus: " + tipus.toString() + " data: " + data + " dies: " + dies;
     }
 
     public static enum TipusTascaManteniment {

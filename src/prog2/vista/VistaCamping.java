@@ -135,13 +135,13 @@ public class VistaCamping {
                     try {
                         //Llistar tasques de manteniment
                         System.out.println("Tasques de manteniment actives:");
-                        camping.llistarTasquesManteniment();
+                        System.out.println(camping.llistarTasquesManteniment());
 
                         // Preguntar a l'usuari i completar tasca
                         System.out.println("Introdueix el número de la tasca que s'ha completat");
                         int num = sc.nextInt();
                         camping.completarTascaManteniment(num);
-
+                        System.out.println("La tasca de manteniment s'ha completat correctament");
                     } catch (ExcepcioCamping e) {
                         System.out.println(e.getMessage());
                     }
