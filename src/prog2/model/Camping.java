@@ -4,8 +4,9 @@ import java.io.*;
 import prog2.vista.ExcepcioCamping;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
-public class Camping implements InCamping{
+public class Camping implements InCamping, Serializable{
     private String nomCamping;
     private LlistaAllotjaments llistaAllotjaments;
     private LlistaAccessos llistaAccessos;
@@ -87,13 +88,17 @@ public class Camping implements InCamping{
     @Override
     public void save(String camiDesti) throws ExcepcioCamping {
         try{
+            System.out.println(System.getProperty("user.dir"));
             FileOutputStream file= new FileOutputStream(camiDesti);
             ObjectOutputStream obj= new ObjectOutputStream(file);
             obj.writeObject(this);
             obj.close();
             file.close();
         } catch (IOException e) {
-            throw new ExcepcioCamping("Error al guardar les dades del camping");
+            e.printStackTrace();
+            throw new ExcepcioCamping("Error al guardar les dades del camping / IOException");
+        } catch (InputMismatchException e) {
+            throw new ExcepcioCamping("Error al guardar les dades del camping / InputMismatch");
         }
     }
 
